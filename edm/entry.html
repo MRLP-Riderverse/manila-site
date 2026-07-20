@@ -78,16 +78,16 @@
        and renders a full page for that entry. Drafts redirect back
        to directory.html since they don't get full pages yet. */
     function currentLang() {
-      const saved = localStorage.getItem('acadie-lang');
-      if (saved === 'fr' || saved === 'en') return saved;
-      return /^fr\b/i.test(navigator.language || '') ? 'fr' : 'en';
+      const saved = localStorage.getItem('manila-lang') || localStorage.getItem('acadie-lang');
+      if (saved === 'tl' || saved === 'en') return saved;
+      return 'en';
     }
     function escapeHtml(str) { const d=document.createElement("div"); d.textContent=String(str||""); return d.innerHTML; }
     function normalize(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
     function cleanSummary(v) {
       if (v && typeof v === 'object') {
         const lang = currentLang();
-        return v[lang] || v.en || v.fr || v.shiac || '';
+        return v[lang] || v.en || v.tl || '';
       }
       return v || '';
     }

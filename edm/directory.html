@@ -509,33 +509,12 @@
         <span class="mini-stat"><strong id="city-stat">…</strong> <span id="city-stat-label">cities</span></span>
         <a class="mini-stat" href="recents.html"><strong id="draft-stat">…</strong> <span id="draft-stat-label">previews</span></a>
       </aside>
+      </section>
     </section>
 
-    <section class="choice-panel" id="choice-panel" aria-label="Choose how to use the directory">
-      <div class="choice-copy">
-        <strong id="dir-choice-kicker">Start here</strong>
-        <h2 id="dir-choice-title">View Everyone</h2>
-        <p id="dir-choice-copy">Search lives in the directory now. This page is the steady browse surface for all published local cards.</p>
-      </div>
-      <div class="choice-actions">
-        <button class="choice-button" id="choose-discover" type="button">
-          <small id="dir-discover-kicker">Browse freely</small>
-          <b id="dir-discover-title">Show all places</b>
-          <span id="dir-discover-copy">Browse the full directory as one alphabetical stack.</span>
-        </button>
-        <button class="choice-button" id="choose-search" type="button">
-          <small id="dir-search-kicker">Find directly</small>
-          <b id="dir-search-choice-title">Open cards</b>
-          <span id="dir-search-choice-copy">Open the directory surface above the cards for names, areas, categories, and attached event terms.</span>
-        </button>
-      </div>
-    </section>
-    </section>
-
-    <section class="body-search" id="search-surface" hidden>
+    <section class="body-search" id="search-surface">
       <div class="search-surface-actions" aria-label="Search shortcuts">
         <button class="search-pill" id="view-all-results" type="button">View all</button>
-        <button class="search-pill" id="open-filters" type="button">Filters</button>
       </div>
       <section class="control-panel glass">
         <div class="control-body">
@@ -547,37 +526,9 @@
           </div>
         </div>
       </section>
-      <div class="filter-popover" id="filter-popover" hidden>
-        <div class="filter-backdrop" id="filter-backdrop" aria-hidden="true"></div>
-        <div class="filter-sheet" role="dialog" aria-modal="true" aria-label="Filters">
-          <div class="filter-title">
-            <span>Filters</span>
-            <button id="close-filters" type="button" aria-label="Close filters">✕</button>
-          </div>
-          <div class="control-grid">
-            <select id="mood-select" class="select" aria-label="Mood">
-              <option value="">Any vibe</option>
-              <option value="food">Food, cafés & treats</option>
-              <option value="waterfront">Waterfront / out for a walk</option>
-              <option value="family">Family-friendly</option>
-              <option value="night">Music, drinks & night out</option>
-            </select>
-            <select id="category-select" class="select" aria-label="Category">
-              <option value="all">All categories</option>
-            </select>
-            <select id="city-select" class="select" aria-label="Area">
-              <option value="all">All areas</option>
-            </select>
-          </div>
-          <div class="filter-actions">
-            <button type="button" id="reset-filters">Reset</button>
-            <button type="button" id="apply-filters">Done</button>
-          </div>
-        </div>
-      </div>
     </section>
-    
-    <!-- Search now lives in this page; the directory shell handles browse + filter in one place. -->
+
+    <!-- Search is the shared Manila discovery surface. Results start visible and narrow as the query changes. -->
 
     <div class="tool-dock" aria-label="Return to top">
       <button class="tool-fab" id="to-top" type="button" aria-label="Return to top of page">
@@ -623,11 +574,11 @@
         searchTitle: '', searchIntro: '', searchPlaceholder: 'Places, categories, or event terms…', moreOptions: 'Filters', showMatches: '', clear: 'Clear', filterOptions: 'Filters', closeFilters: 'Close filters', anyVibe: 'Any vibe', moodFood: 'Food, cafés & treats', moodWaterfront: 'Waterfront / out for a walk', moodFamily: 'Family-friendly', moodNight: 'Music, drinks & night out',
         allCategories: 'All categories', allAreas: 'All areas', done: 'Done', reset: 'Reset', filterNote: '', resultsTitle: 'Places', resultDefault: 'Showing local places.', searchReady: 'Ready to browse.', allPlaces: 'View all', jumpToList: 'Jump to list', footer: '', timestampUnavailable: 'Timestamp unavailable', dateTbd: 'Date TBD', preview: 'preview', noRecentEntries: 'No recent entries yet.', relatedEvents: 'Related events', linkedCalendarItem: 'linked calendar item', location: 'Location', eventSingular: 'event', eventPlural: 'events', next7Days: 'next 7 days', address: 'Address', hours: 'Hours', phone: 'Phone', email: 'Email', website: 'Website', viewFullPage: 'View full page', descriptionComingSoon: 'Public description coming soon.', placeSingular: 'place', placePlural: 'places', searchLabel: 'query', matching: 'matching', showing: 'Showing', alphabetically: 'alphabetically', projectLog: 'View Project Log ↗', noMatchesTitle: 'No matches yet.', noMatchesBody: 'Clear filters or try a broader query.', loadFailed: 'Directory failed to load.'
       },
-      fr: {
-        brandSubtitle: 'Répertoire communautaire', navSearch: '🔎', navEvents: 'Événements', navHome: 'Accueil', eyebrow: 'Répertoire Manila EDM', title: 'Parcourir les lieux locaux.', lede: 'La découverte vit maintenant dans le répertoire : ouvrez la surface du répertoire, puis parcourez ou filtrez les mêmes cartes sans changer de page.', entries: 'entrées', categories: 'catégories', cities: 'villes', previews: 'aperçus',
-        choiceKicker: 'Commencez ici', choiceTitle: 'Vue du répertoire complet.', choiceCopy: 'La navigation vit ici. Le mode direct est l’autre chemin.', discoverKicker: 'Parcourir librement', discoverTitle: 'Voir tous les lieux', discoverCopy: 'Ouvrez chaque fiche publiée en une pile alphabétique.', searchKicker: 'Mode direct', searchChoiceTitle: 'Ouvrir les cartes au besoin', searchChoiceCopy: 'Gardez le répertoire discret jusqu’à ce que vous vouliez les résultats.',
-        searchTitle: '', searchIntro: '', searchPlaceholder: 'Lieux, catégories ou termes d’événements…', moreOptions: 'Filtres', showMatches: '', clear: 'Effacer', filterOptions: 'Filtres', closeFilters: 'Fermer les filtres', anyVibe: 'Toute ambiance', moodFood: 'Restos, cafés et gâteries', moodWaterfront: 'Bord de l’eau / promenade', moodFamily: 'Familial', moodNight: 'Musique, sorties et soirée',
-        allCategories: 'Toutes les catégories', allAreas: 'Tous les secteurs', done: 'Terminer', reset: 'Réinitialiser', filterNote: '', resultsTitle: 'Lieux', resultDefault: 'Affichage des lieux locaux.', searchReady: 'Prêt à parcourir.', allPlaces: 'Voir tout', jumpToList: 'Aller à la liste', footer: '', timestampUnavailable: 'Horodatage indisponible', dateTbd: 'Date à confirmer', preview: 'aperçu', noRecentEntries: 'Aucune entrée récente.', relatedEvents: 'Événements liés', linkedCalendarItem: 'élément du calendrier lié', location: 'Lieu', eventSingular: 'événement', eventPlural: 'événements', next7Days: '7 prochains jours', address: 'Adresse', hours: 'Heures', phone: 'Téléphone', email: 'Courriel', website: 'Site web', viewFullPage: 'Voir la page complète', descriptionComingSoon: 'Description publique à venir.', placeSingular: 'lieu', placePlural: 'lieux', searchLabel: 'requête', matching: 'correspondant à', showing: 'Affichage de', alphabetically: 'par ordre alphabétique', projectLog: 'Voir le journal du projet ↗', noMatchesTitle: 'Aucun résultat pour le moment.', noMatchesBody: 'Effacez les filtres ou essayez une requête plus large.', loadFailed: 'Échec du chargement du répertoire.'
+      tl: {
+        brandSubtitle: 'Community directory', navSearch: '🔎', navEvents: 'Events', navHome: 'Home', eyebrow: 'Manila EDM directory', title: 'Browse local places.', lede: 'Search now lives inside the directory: browse the same cards and narrow the list when you have a place in mind.', entries: 'entries', categories: 'categories', cities: 'cities', previews: 'previews',
+        choiceKicker: 'Start here', choiceTitle: 'View Everyone', choiceCopy: 'Search lives here. Browse the full directory or narrow it with a query.', discoverKicker: 'Browse freely', discoverTitle: 'Show all places', discoverCopy: 'Open every published card in one alphabetical stack.', searchKicker: 'Search', searchChoiceTitle: 'Find a place', searchChoiceCopy: 'Search names, areas, categories, and attached event terms.',
+        searchTitle: '', searchIntro: '', searchPlaceholder: 'Places, categories, or event terms…', moreOptions: 'Options', showMatches: '', clear: 'Clear', filterOptions: 'Options', closeFilters: 'Close options', anyVibe: 'Any vibe', moodFood: 'Food, cafés & treats', moodWaterfront: 'Waterfront / out for a walk', moodFamily: 'Family-friendly', moodNight: 'Music, drinks & night out',
+        allCategories: 'All categories', allAreas: 'All areas', done: 'Done', reset: 'Reset', filterNote: '', resultsTitle: 'Places', resultDefault: 'Showing local places.', searchReady: 'Ready to browse.', allPlaces: 'View all', jumpToList: 'Jump to list', footer: '', timestampUnavailable: 'Timestamp unavailable', dateTbd: 'Date TBD', preview: 'preview', noRecentEntries: 'No recent entries yet.', relatedEvents: 'Related events', linkedCalendarItem: 'linked calendar item', location: 'Location', eventSingular: 'event', eventPlural: 'events', next7Days: 'next 7 days', address: 'Address', hours: 'Hours', phone: 'Phone', email: 'Email', website: 'Website', viewFullPage: 'View full page', descriptionComingSoon: 'Public description coming soon.', placeSingular: 'place', placePlural: 'places', searchLabel: 'query', matching: 'matching', showing: 'Showing', alphabetically: 'alphabetically', projectLog: 'View Project Log ↗', noMatchesTitle: 'No matches yet.', noMatchesBody: 'Try a broader query.', loadFailed: 'Directory failed to load.'
       }
     };
     function copy() { return DIR_COPY[currentLang()] || DIR_COPY.en; }
@@ -638,9 +589,9 @@
     document.documentElement.classList.add('route-pending');
     /* Language toggle — shared with events.html and entry.html */
     function currentLang() {
-      const saved = localStorage.getItem('acadie-lang');
-      if (saved === 'fr' || saved === 'en') return saved;
-      return /^fr\b/i.test(navigator.language || '') ? 'fr' : 'en';
+      const saved = localStorage.getItem('manila-lang') || localStorage.getItem('acadie-lang');
+      if (saved === 'tl' || saved === 'en') return saved;
+      return 'en';
     }
     function updateMenuControls() {
       document.documentElement.dataset.lang = currentLang();
@@ -654,9 +605,9 @@
       }
       const langButton = document.getElementById('lang-toggle');
       if (langButton) {
-        const isFr = currentLang() === 'fr';
-        langButton.setAttribute('aria-label', isFr ? 'Switch language to English' : 'Switch language to Tagalog');
-        langButton.setAttribute('title', isFr ? 'Français actif — passer en anglais' : 'English active — switch to Tagalog');
+        const isTl = currentLang() === 'tl';
+        langButton.setAttribute('aria-label', isTl ? 'Switch language to English' : 'Switch language to Tagalog');
+        langButton.setAttribute('title', isTl ? 'Switch to English' : 'Switch to Tagalog');
       }
     }
     function renderDirectory() { renderControls(); renderRecent(); renderResults(); }
@@ -718,7 +669,7 @@
     function localizedText(value) {
       if (value && typeof value === 'object') {
         const lang = currentLang();
-        return value[lang] || value.en || value.fr || value.shiac || '';
+        return value[lang] || value.en || value.tl || '';
       }
       return value || '';
     }
@@ -1276,7 +1227,7 @@
       renderControls();
       renderRecent();
       bindEvents();
-      setDirectoryIntent(window.location.hash === '#search' ? 'search' : window.location.hash === '#browse' ? 'browse' : 'intro', { scroll: false, focus: false, render: true });
+      setDirectoryIntent('browse', { scroll: false, focus: false, render: true });
       if (window.location.hash.startsWith('#entry-')) setDirectoryIntent('browse', { scroll: false, focus: false });
       document.documentElement.classList.remove('route-pending');
     }).catch(err => {

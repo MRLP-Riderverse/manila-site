@@ -13,7 +13,7 @@
       closeMenu: 'Close menu',
       dark: 'Switch to dark mode',
       light: 'Switch to light mode',
-      langToFr: 'Switch language to French',
+      langToTl: 'Switch language to Tagalog',
       langToEn: 'Switch language to English',
       remembrance: 'Remembrance',
       headerBanner: (entries, events) => `${entries} Entries · Manila EDM · ${events} Events`,
@@ -23,28 +23,28 @@
         support: 'Support', about: 'About', extras: 'Extras'
       }
     },
-    fr: {
+    tl: {
       menu: 'Menu',
-      closeMenu: 'Fermer le menu',
-      dark: 'Passer en mode sombre',
-      light: 'Passer en mode clair',
-      langToFr: 'Passer en français',
-      langToEn: 'Passer en anglais',
-      remembrance: 'Souvenirs',
+      closeMenu: 'Isara ang menu',
+      dark: 'Lumipat sa dark mode',
+      light: 'Lumipat sa light mode',
+      langToTl: 'Lumipat sa Tagalog',
+      langToEn: 'Lumipat sa English',
+      remembrance: 'Paggunita',
       headerBanner: (entries, events) => `${entries} Entries · Manila EDM · ${events} Events`,
       routes: {
-        home: 'Accueil', directory: 'Répertoire', events: 'Événements', search: 'Recherche',
-        photos: 'Photos', community: 'Communauté', updates: 'Mises à jour',
-        support: 'Soutien', about: 'À propos', extras: 'Extras'
+        home: 'Home', directory: 'Directory', events: 'Events', search: 'Search',
+        photos: 'Photos', community: 'Community', updates: 'Updates',
+        support: 'Support', about: 'About', extras: 'Extras'
       }
     }
   };
 
   const ROUTES = {
     home: { href: 'index.html', icon: '⌂' },
-    directory: { href: 'directory.html#browse', icon: '⌕' },
+    directory: { href: 'search.html#search', icon: '⌕' },
     events: { href: 'events.html', icon: '◷' },
-    search: { href: 'search.html', icon: '⌕' },
+    search: { href: 'search.html#search', icon: '⌕' },
     photos: { href: 'photos/index.html', icon: '▧' },
     community: { href: 'community.html', icon: '✦' },
     updates: { href: 'home-feed.html', icon: '↻' },
@@ -63,7 +63,8 @@
   }
 
   function currentLang() {
-    // The first Manila EDM release is English-first; Tagalog can be added from steward-provided copy later.
+    const saved = localStorage.getItem('manila-lang') || localStorage.getItem('acadie-lang');
+    if (saved === 'tl' || saved === 'en') return saved;
     return 'en';
   }
 
@@ -138,8 +139,8 @@
 
     const langButton = document.getElementById('lang-toggle');
     if (langButton) {
-      const isFr = lang === 'fr';
-      const label = isFr ? copy.langToEn : copy.langToFr;
+      const isTl = lang === 'tl';
+      const label = isTl ? copy.langToEn : copy.langToTl;
       langButton.setAttribute('aria-label', label);
       langButton.setAttribute('title', label);
     }
@@ -170,6 +171,7 @@
   }
 
   function setLang(lang) {
+    localStorage.setItem('manila-lang', lang);
     localStorage.setItem('acadie-lang', lang);
     syncShell();
     window.dispatchEvent(new CustomEvent('acadie:languagechange', { detail: { lang } }));
@@ -218,7 +220,7 @@
       <div class="drawer-controls" aria-label="Display and language controls">
         <button class="menu-control theme-button" type="button" id="theme-toggle">☾</button>
         <button class="drawer-close" type="button" id="drawer-close">×</button>
-        <button class="menu-control lang-button" type="button" id="lang-toggle"><span class="lang-en">EN</span><span class="lang-sep">/</span><span class="lang-fr">FR</span></button>
+        <button class="menu-control lang-button" type="button" id="lang-toggle"><span class="lang-en">EN</span><span class="lang-sep">/</span><span class="lang-tl">TL</span></button>
       </div>
       <nav class="drawer-nav">${MENU_KEYS.map(key => routeLink(key, 'drawer-route')).join('')}</nav>
     </aside>
@@ -308,7 +310,7 @@
       setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
     });
     document.getElementById('lang-toggle')?.addEventListener('click', () => {
-      setLang(currentLang() === 'fr' ? 'en' : 'fr');
+      setLang(currentLang() === 'tl' ? 'en' : 'tl');
     });
     document.querySelectorAll('.drawer-nav a').forEach(link => link.addEventListener('click', () => {
       const toggle = document.getElementById('menu-toggle');
