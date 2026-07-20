@@ -49,14 +49,13 @@
     community: { href: 'community.html', icon: '✦' },
     updates: { href: 'home-feed.html', icon: '↻' },
     support: { href: 'support.html', icon: '◇' },
-    about: { href: 'about-us.html', icon: '⁜' },
+    about: { href: 'about.html', icon: '⁜' },
     extras: { href: 'extras.html', icon: '＋' }
   };
 
-  // Keep the everyday shell focused. Directory, events, and institutional links
-  // remain reachable from Home or the full-page Extras hub instead of crowding Menu.
+  // Keep the everyday shell focused: the drawer owns the few routes needed for this early niche release.
   const DESKTOP_KEYS = ['home', 'search', 'photos'];
-  const MENU_KEYS = ['home', 'search', 'photos', 'extras'];
+  const MENU_KEYS = ['home', 'directory', 'search', 'about'];
   const SHELL_DATA = { entryCount: null, eventCount: null };
 
   function siteUrl(path = '') {
@@ -85,7 +84,7 @@
     if (/directory\.html$/.test(path) || /entry\.html$/.test(path)) return 'directory';
     if (/home-feed\.html$/.test(path) || /recents\.html$/.test(path)) return 'updates';
     if (/support\.html$/.test(path)) return 'support';
-    if (/about-us\.html$/.test(path)) return 'about';
+    if (/about\.html$/.test(path)) return 'about';
     if (/extras\.html$/.test(path)) return 'extras';
     return 'home';
   }
@@ -147,10 +146,10 @@
 
     const close = document.querySelector('.drawer-backdrop');
     if (close) close.setAttribute('aria-label', copy.closeMenu);
-    const remembrance = document.querySelector('.drawer-close');
-    if (remembrance) {
-      remembrance.setAttribute('aria-label', copy.remembrance);
-      remembrance.setAttribute('title', copy.remembrance);
+    const drawerClose = document.getElementById('drawer-close');
+    if (drawerClose) {
+      drawerClose.setAttribute('aria-label', copy.closeMenu);
+      drawerClose.setAttribute('title', copy.closeMenu);
     }
 
     const { entryCount, eventCount } = SHELL_DATA;
@@ -218,7 +217,7 @@
     <aside class="drawer" id="site-menu-drawer" aria-label="Menu">
       <div class="drawer-controls" aria-label="Display and language controls">
         <button class="menu-control theme-button" type="button" id="theme-toggle">☾</button>
-        <a class="drawer-close" href="${siteUrl('obituaries.html')}">✟</a>
+        <button class="drawer-close" type="button" id="drawer-close">×</button>
         <button class="menu-control lang-button" type="button" id="lang-toggle"><span class="lang-en">EN</span><span class="lang-sep">/</span><span class="lang-fr">FR</span></button>
       </div>
       <nav class="drawer-nav">${MENU_KEYS.map(key => routeLink(key, 'drawer-route')).join('')}</nav>
@@ -298,6 +297,12 @@
       event.preventDefault();
       menuToggle.checked = false;
       menuToggle.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    document.getElementById('drawer-close')?.addEventListener('click', () => {
+      const toggle = document.getElementById('menu-toggle');
+      if (!toggle) return;
+      toggle.checked = false;
+      toggle.dispatchEvent(new Event('change', { bubbles: true }));
     });
     document.getElementById('theme-toggle')?.addEventListener('click', () => {
       setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');

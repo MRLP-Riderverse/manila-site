@@ -6,30 +6,31 @@
   <title>Manila EDM Directory</title>
   <link rel="stylesheet" href="assets/site-colors.css">
   <link rel="stylesheet" href="assets/site-shell.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <style>
-    /* Manila landing surface: discovery first, provenance visible but calm. */
-    main { max-width: 720px; margin: 0 auto; padding: clamp(3rem, 12vw, 8rem) 1.25rem 4rem; }
-    h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); line-height: .95; margin: .4rem 0 1rem; }
-    p { max-width: 42rem; line-height: 1.6; }
-    .launch { display: inline-block; margin-top: 1.5rem; padding: .85rem 1.1rem; border: 1px solid currentColor; border-radius: 999px; text-decoration: none; }
-    .provenance { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid color-mix(in srgb, currentColor 28%, transparent); font-size: .9rem; }
-    .provenance p { margin: .45rem 0; }
-    .provenance a { font-weight: 700; }
-    .quiet-links { margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    /* Homepage identity stack: niche label, live count, one route, provenance. */
+    body { min-height: 100svh; background: var(--page-bg); }
+    main { min-height: calc(100svh - 42px); box-sizing: border-box; display: grid; place-content: center; justify-items: center; gap: 0; padding: 5rem 1.25rem 3rem; text-align: center; }
+    .eyebrow { margin: 0 0 1.2rem; color: var(--ink-strong); font: 900 .78rem/1 monospace; letter-spacing: .12em; }
+    h1 { max-width: 25rem; margin: 0; color: var(--ink-strong); font: 1.65rem/1.35 "Pokemon GB", monospace; letter-spacing: .04em; }
+    .entry-count { margin: 1.8rem 0 1.4rem; color: var(--ink-strong); font: 1rem/1.2 monospace; font-weight: 900; }
+    .discover { display: inline-block; min-width: 9rem; padding: .9rem 1.4rem; border: 2px solid #050505; border-radius: 12px; background: var(--gold); color: #050505; font: 1rem/1 monospace; font-weight: 900; text-decoration: none; box-shadow: 3px 3px 0 #050505; }
+    .discover:hover, .discover:focus-visible { background: #ffe391; transform: translate(1px, 1px); box-shadow: 2px 2px 0 #050505; }
+    .divider { margin: 2.6rem 0 1.8rem; color: var(--ink-strong); font-size: 1.1rem; letter-spacing: .08em; text-shadow: 1px 1px 0 #050505; }
+    .created { margin: 0; color: var(--ink-strong); font: .88rem/1.8 monospace; font-weight: 900; }
+    .created strong { font-family: "Pokemon GB", monospace; font-size: .72rem; letter-spacing: .04em; }
+    @media (min-width: 900px) { main { min-height: 100svh; padding-top: 3rem; } h1 { font-size: 2rem; } }
   </style>
 </head>
 <body>
   <main>
-    <p>MANILA / EDM</p>
-    <h1>Find the artists shaping the scene.</h1>
-    <p>An English-first directory for electronic music artists, groups, and local scene connections around Metro Manila.</p>
-    <a class="launch" href="directory.html">Browse the directory →</a>
-
-    <section class="provenance" aria-labelledby="stewards-title">
-      <p id="stewards-title"><strong>Manila EDM · created 2026</strong></p>
-      <p>Stewarded by <strong>JOSH.sol</strong> &amp; <strong>MidnightRider.sol</strong>.</p>
-      <div class="quiet-links"><a href="about.html">About this node →</a></div>
-    </section>
+    <p class="eyebrow">MANILA - EDM</p>
+    <h1 class="manila-display">⁜ MANILA’S EDM ⁜</h1>
+    <p class="entry-count"><span id="home-entry-count">…</span> entries</p>
+    <a class="discover" href="directory.html">Discover!</a>
+    <div class="divider" aria-hidden="true">✧❅✦❅✧</div>
+    <p class="created">Created in 2026<br>by<br><strong>JOSH.sol &amp; MidnightRider.sol</strong></p>
   </main>
+  <script src="assets/site-shell.js"></script>
 </body>
 </html>
