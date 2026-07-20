@@ -888,10 +888,17 @@
         : `<li class="recent-item"><div>${escapeHtml(copy().noRecentEntries)}</div></li>`;
     }
 
+    function normalizeComparable(value) {
+      return cleanSummary(value).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    }
     function renderNoteBlock(item, notes) {
-      const points = Array.isArray(item.note_points) ? item.note_points.map(cleanSummary).filter(Boolean) : [];
+      const description = item.description_localized || item.description || item.summary || '';
+      const descriptionKey = normalizeComparable(description);
+      const points = Array.isArray(item.note_points)
+        ? item.note_points.map(cleanSummary).filter(point => point && normalizeComparable(point) !== descriptionKey)
+        : [];
       if (points.length) return `<ul class="note-list">${points.map(point => `<li>${escapeHtml(point)}</li>`).join('')}</ul>`;
-      return notes ? `<p class="notes">${escapeHtml(notes)}</p>` : '';
+      return notes && normalizeComparable(notes) !== descriptionKey ? `<p class="notes">${escapeHtml(notes)}</p>` : '';
     }
 
     function parseEventDate(value) {
