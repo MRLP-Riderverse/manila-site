@@ -154,7 +154,7 @@
 
     const { entryCount, eventCount } = SHELL_DATA;
     const headerText = document.getElementById('global-header-text');
-    if (headerText) headerText.textContent = "Manila EDM";
+    if (headerText) headerText.textContent = "Better Together";
 
     const homeEntryCount = document.getElementById('home-entry-count');
     const homeEventCount = document.getElementById('home-event-count');
@@ -204,9 +204,9 @@
   document.documentElement.dataset.lang = currentLang();
 
   document.body.insertAdjacentHTML('afterbegin', `
-    <header class="site-header" aria-label="Manila EDM banner"><span id="global-header-text">Manila EDM</span></header>
+    <header class="site-header" aria-label="Manila EDM banner"><span id="global-header-text">Better Together</span></header>
     <nav class="site-desktop-nav" aria-label="Primary navigation">
-      <a class="desktop-wordmark" href="${siteUrl('index.html')}" aria-label="Manila EDM home">MANILA EDM</a>
+      <a class="desktop-wordmark" href="${siteUrl('index.html')}" aria-label="Manila EDM home">BETTER TOGETHER</a>
       <div class="desktop-route-list">${DESKTOP_KEYS.map(key => routeLink(key, 'desktop-route')).join('')}</div>
       <label class="desktop-menu-launch" for="menu-toggle" data-menu-label role="button" tabindex="0" aria-controls="site-menu-drawer" aria-expanded="false">
         <span class="route-icon" aria-hidden="true">☰</span><span class="route-label">Menu</span>

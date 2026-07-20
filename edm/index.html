@@ -8,27 +8,25 @@
   <link rel="stylesheet" href="assets/site-shell.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <style>
-    /* Homepage identity stack: niche label, live count, one route, provenance. */
+    /* Homepage identity stack: title, live count, one route, provenance. */
     body { min-height: 100svh; background: var(--page-bg); }
     main { min-height: calc(100svh - 42px); box-sizing: border-box; display: grid; place-content: center; justify-items: center; gap: 0; padding: 5rem 1.25rem 3rem; text-align: center; }
-    .eyebrow { margin: 0 0 1.2rem; color: var(--ink-strong); font: 900 .78rem/1 monospace; letter-spacing: .12em; }
     h1 { max-width: 25rem; margin: 0; color: var(--ink-strong); font: 1.65rem/1.35 "Pokemon GB", monospace; letter-spacing: .04em; }
     .entry-count { margin: 1.8rem 0 1.4rem; color: var(--ink-strong); font: 1rem/1.2 monospace; font-weight: 900; }
     .discover { display: inline-block; min-width: 9rem; padding: .9rem 1.4rem; border: 2px solid #050505; border-radius: 12px; background: var(--gold); color: #050505; font: 1rem/1 monospace; font-weight: 900; text-decoration: none; box-shadow: 3px 3px 0 #050505; }
     .discover:hover, .discover:focus-visible { background: #ffe391; transform: translate(1px, 1px); box-shadow: 2px 2px 0 #050505; }
     .divider { margin: 2.6rem 0 1.8rem; color: var(--ink-strong); font-size: 1.1rem; letter-spacing: .08em; text-shadow: 1px 1px 0 #050505; }
-    .created { margin: 0; color: var(--ink-strong); font: .88rem/1.8 monospace; font-weight: 900; }
+    .created { margin: 1.7rem 0 0; color: var(--ink-strong); font: .88rem/1.8 monospace; font-weight: 900; }
     .created strong { font-family: "Pokemon GB", monospace; font-size: .72rem; letter-spacing: .04em; }
     @media (min-width: 900px) { main { min-height: 100svh; padding-top: 3rem; } h1 { font-size: 2rem; } }
   </style>
 </head>
 <body>
   <main>
-    <p class="eyebrow">MANILA - EDM</p>
-    <h1 class="manila-display">⁜ MANILA’S EDM ⁜</h1>
+    <h1 class="manila-display">MANILA’S EDM</h1>
+    <div class="divider" aria-hidden="true">⁜</div>
     <p class="entry-count"><span id="home-entry-count">…</span> entries</p>
     <a class="discover" href="directory.html">Discover!</a>
-    <div class="divider" aria-hidden="true">✧❅✦❅✧</div>
     <p class="created">Created in 2026<br>by<br><strong>JOSH.sol &amp; MidnightRider.sol</strong></p>
   </main>
   <script src="assets/site-shell.js"></script>

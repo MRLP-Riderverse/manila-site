@@ -1,5 +1,5 @@
-/* Global Acadie.sol shell chrome.
-   A single mobile launcher and the desktop top bar share one focused menu model.
+/* Global Manila shell chrome.
+   A simple mobile launcher and the desktop top bar share one focused popup menu.
    Page styles own content surfaces, not navigation. */
 
 .site-header {
@@ -17,9 +17,9 @@
   background: color-mix(in srgb, var(--paper) 88%, transparent);
   color: var(--ink-strong);
   border-bottom: 1px solid var(--line);
-  box-shadow: 0 6px 18px -10px var(--shadow);
-  backdrop-filter: blur(18px) saturate(1.25);
-  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   font: 900 .7rem/1 monospace;
   letter-spacing: .045em;
   text-transform: uppercase;
@@ -60,22 +60,23 @@ body { padding-top: 0; }
 .drawer {
   position: fixed;
   z-index: 95;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: min(340px, 88vw);
-  overflow-y: auto;
-  padding: calc(72px + env(safe-area-inset-top)) 16px 24px;
-  border-left: 1px solid var(--line-strong);
+  top: auto;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: min(390px, calc(100vw - 32px));
+  box-sizing: border-box;
+  max-height: calc(100svh - 130px);
+  margin: 0 auto;
+  padding: 58px 14px 14px;
+  border: 1px solid var(--line);
+  border-radius: 26px;
   background: var(--glass, var(--paper));
-  backdrop-filter: blur(20px) saturate(1.45);
-  -webkit-backdrop-filter: blur(20px) saturate(1.45);
-  box-shadow: -24px 0 54px var(--shadow);
+  box-shadow: 0 24px 54px var(--shadow);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(100%);
-  transition: transform .22s ease, opacity .22s ease, visibility 0s linear .22s;
+  transform: translateY(8px) scale(.98);
+  transition: transform .18s ease, opacity .18s ease, visibility 0s linear .18s;
 }
 
 .menu-toggle:checked ~ .drawer-backdrop {
@@ -88,7 +89,7 @@ body { padding-top: 0; }
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(0);
+  transform: translateY(0) scale(1);
   transition-delay: 0s;
 }
 
@@ -171,8 +172,9 @@ body { padding-top: 0; }
    Home now lives inside Menu, while secondary destinations move to Extras. */
 .site-menu-fab {
   position: fixed;
-  top: max(14px, env(safe-area-inset-top));
-  right: max(14px, env(safe-area-inset-right));
+  top: auto;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
   width: 52px;
   min-width: 52px;
   height: 52px;
@@ -259,16 +261,14 @@ body { padding-top: 0; }
   }
 
   .drawer {
-    top: 82px;
+    top: auto;
     right: max(24px, calc((100vw - 1180px) / 2));
-    bottom: auto;
+    bottom: 24px;
     width: 360px;
     max-height: calc(100svh - 106px);
-    border: 1px solid var(--line-strong);
-    border-radius: 18px 0 18px 18px;
-    transform: translateX(18px);
+    border-radius: 18px;
   }
-  .menu-toggle:checked ~ .drawer { transform: translateX(0); }
+  .menu-toggle:checked ~ .drawer { transform: translateY(0) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
