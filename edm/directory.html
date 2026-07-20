@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Shared identity metadata: use the same avatar for the desktop tab,
+       homescreen install icon, and other PWA surfaces. -->
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#f5ede1" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c1626" media="(prefers-color-scheme: dark)" />
+  <title>MANILA EDM Directory</title>
+  <link rel="stylesheet" href="assets/site-colors.css" />
+  <style>
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Verdana", sans-serif;
+      color: var(--text);
+      font-size: 15px;
+      background: var(--page-bg);
+    }
+
+    a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: var(--link-hover); }
+    code { color: var(--ink-strong); }
+
+    .wrap { width: min(1120px, calc(100vw - 28px)); margin: 0 auto; padding: 18px 0 40px; }
+
+    .control-panel,
+    .choice-panel,
+    .recent-panel,
+    .directory-card,
+    .empty {
+      border: 1px solid var(--line);
+      background: var(--card-strong);
+      box-shadow: 0 16px 38px var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .splash {
+      min-height: calc(100svh - 140px);
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      padding: clamp(18px, 4vw, 42px) 0;
+    }
+    .splash[hidden] { display: none; }
+    .hero {
+      padding: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    h1 { margin: 0; font-size: clamp(1.85rem, 4.2vw, 3.35rem); line-height: 1; letter-spacing: 0.01em; }
+    .lede { margin: 12px 0 0; max-width: 72ch; color: var(--muted); line-height: 1.5; font-size: 0.96rem; }
+
+    .mini-stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; min-width: min(360px, 100%); }
+    .mini-stat { border: 1px solid var(--line); border-radius: 999px; padding: 8px 10px; background: rgba(255,255,255,0.06); color: var(--muted); font-size: 0.82rem; white-space: nowrap; text-decoration: none; }
+    button.mini-stat { font: inherit; cursor: pointer; }
+    .mini-stat:hover { border-color: var(--gold); color: var(--text); background: rgba(242,200,75,0.12); }
+    .mini-stat strong { color: var(--gold); }
+    .directory-utility { display: flex; justify-content: flex-end; margin: 0 0 6px; }
+    .project-log-link { color: var(--link); border-color: color-mix(in srgb, var(--gold) 42%, var(--line)); }
+
+    .choice-panel {
+      border-radius: 28px;
+      padding: clamp(16px, 3vw, 28px);
+      display: grid;
+      gap: 18px;
+      background: rgba(10, 43, 87, 0.72);
+    }
+    .choice-copy { display: grid; gap: 7px; max-width: 76ch; }
+    .choice-copy strong { color: var(--gold); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .choice-copy h2 { margin: 0; font-size: clamp(1.28rem, 2.8vw, 2rem); line-height: 1.05; }
+    .choice-copy p { margin: 0; color: var(--muted); line-height: 1.45; }
+    .choice-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .choice-button {
+      min-height: 148px;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 22px;
+      padding: 18px;
+      display: grid;
+      align-content: space-between;
+      gap: 12px;
+      text-align: left;
+      background: rgba(8,18,40,0.24);
+      border-color: color-mix(in srgb, var(--ink) 20%, transparent);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .choice-button.active,
+    .choice-button:hover { background: rgba(242,200,75,0.94); color: var(--gold-ink); border-color: var(--gold); }
+    .choice-button b { font-size: clamp(1.1rem, 2.6vw, 1.45rem); }
+    .choice-button span { color: var(--muted); font-size: 0.9rem; line-height: 1.38; max-width: 28ch; }
+    .choice-button small { color: var(--gold); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 900; }
+    .choice-button:hover span,
+    .choice-button.active span { color: color-mix(in srgb, var(--blue-ink) 76%, transparent); }
+    .choice-button:hover small,
+    .choice-button.active small { color: color-mix(in srgb, var(--blue-ink) 78%, transparent); }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    .body-search { margin-top: 0; position: relative; }
+    .body-search[hidden],
+    .directory-shell[hidden] { display: none; }
+    html.route-pending .splash,
+    html.route-pending .directory-shell,
+    html.route-pending .body-search { visibility: hidden; }
+    html.filters-open { overflow: hidden; }
+
+    .control-panel { margin-top: 10px; border-radius: 20px; overflow: clip; }
+    .search-surface-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 2px;
+      padding: 0 2px;
+      justify-content: flex-end;
+    }
+    .search-pill {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.74rem;
+      width: auto;
+      min-height: 0;
+      white-space: nowrap;
+    }
+    .control-body { padding: 12px; display: grid; gap: 10px; }
+    .control-grid { display: grid; gap: 10px; }
+    .search-shell { display: grid; gap: 7px; width: 100%; }
+    .control-grid.search-shell { grid-template-columns: minmax(0, 1fr); }
+    .search-field { position: relative; width: 100%; }
+    .search-action {
+      white-space: nowrap;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      width: auto;
+      min-height: 0;
+    }
+    .search-clear {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border-radius: 999px;
+      font-size: 1rem;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+      border-color: var(--line);
+      box-shadow: 0 6px 14px rgba(5,13,27,0.12);
+    }
+    .search-clear[hidden] { display: none; }
+    .filter-popover {
+      position: fixed;
+      inset: 0;
+      z-index: 55;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      background: rgba(8, 18, 40, 0.24);
+      backdrop-filter: blur(10px) saturate(1.05);
+    }
+    .filter-popover[hidden] { display: none; }
+    .filter-backdrop {
+      position: absolute;
+      inset: 0;
+    }
+    .filter-sheet {
+      position: relative;
+      z-index: 1;
+      width: min(560px, 100%);
+      display: grid;
+      align-content: start;
+      gap: 9px;
+      padding: 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--panel-strong) 96%, transparent);
+      box-shadow: 0 22px 48px rgba(5,13,27,0.42);
+    }
+    .filter-title { display: flex; justify-content: space-between; align-items: center; gap: 10px; color: var(--gold); font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.78rem; }
+    .filter-actions { display: flex; justify-content: space-between; gap: 8px; }
+    .filter-actions button { flex: 1 1 0; }
+
+    .search,
+    .select {
+      width: 100%;
+      min-width: 0;
+      padding: 12px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line-strong);
+      background: rgba(8, 18, 40, 0.3);
+      color: var(--text);
+      font: inherit;
+      font-size: 16px;
+      outline: none;
+    }
+    .search { padding-right: 44px; }
+    .search::placeholder { color: color-mix(in srgb, var(--muted) 72%, transparent); }
+    .select option { color: var(--ink); background: var(--paper); }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      padding: 10px 13px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font: inherit;
+      cursor: pointer;
+    }
+    button:hover,
+    button.active { background: var(--gold); border-color: var(--gold); color: var(--gold-ink); }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid rgba(242, 200, 75, 0.34);
+      outline-offset: 2px;
+    }
+
+    .filter-note { color: var(--soft); font-size: 0.85rem; line-height: 1.35; }
+
+    .tool-dock {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 40;
+      display: grid;
+      justify-items: end;
+      gap: 10px;
+    }
+    .tool-fab {
+      width: 52px;
+      height: 52px;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--paper);
+      border: 1px solid rgba(255,255,255,0.45);
+      color: var(--text);
+      box-shadow: 0 14px 32px rgba(5,13,27,0.42);
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      touch-action: manipulation;
+    }
+    .tool-fab:hover { background: var(--gold); border-color: var(--gold); color: var(--gold-ink); }
+    .tool-fab-icon {
+      display: block;
+      width: 13px;
+      height: 13px;
+      border-left: 3px solid currentColor;
+      border-top: 3px solid currentColor;
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .viewbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 16px 0 9px; flex-wrap: wrap; }
+    .view-title { display: grid; gap: 3px; }
+    .view-title h2 { margin: 0; font-size: 1.08rem; }
+    .view-title span { color: var(--muted); font-size: 0.88rem; }
+    .view-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .recent-panel { margin-top: 14px; border-radius: 20px; overflow: clip; }
+    .recent-panel > summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 14px;
+    }
+    .recent-panel > summary::-webkit-details-marker { display: none; }
+    .recent-copy { display: grid; gap: 4px; }
+    .recent-copy strong { font-size: 0.95rem; }
+    .recent-copy span { color: var(--muted); font-size: 0.82rem; line-height: 1.35; }
+    .recent-kicker { color: var(--gold); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .recent-chevron { color: var(--gold); font-size: 1rem; font-weight: 900; }
+    .recent-panel[open] .recent-chevron { transform: rotate(180deg); }
+    .recent-body { border-top: 1px solid rgba(248,245,234,0.1); padding: 0 14px 14px; }
+    .recent-list { list-style: none; margin: 0; padding: 10px 0 0; display: grid; gap: 8px; }
+    .recent-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px 12px;
+      align-items: start;
+      padding: 10px 11px;
+      border: 1px solid rgba(248,245,234,0.1);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+    }
+    .recent-link { color: var(--text); font-weight: 700; text-decoration: none; }
+    .recent-link:hover { color: var(--gold); }
+    .recent-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+    .recent-date { color: var(--muted); font-size: 0.79rem; white-space: nowrap; }
+
+    .results-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+    .result-section { display: grid; gap: 9px; margin-bottom: 18px; border-radius: 20px; overflow: clip; }
+    .result-section > summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 14px;
+    }
+    .result-section > summary::-webkit-details-marker { display: none; }
+    .section-heading { display: grid; gap: 4px; }
+    .section-heading h3 { margin: 0; font-size: 0.96rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; }
+    .section-heading span { color: var(--soft); font-size: 0.82rem; }
+    .section-chevron { color: var(--gold); font-size: 1rem; font-weight: 900; transition: transform 0.15s ease; }
+    .result-section[open] > summary .section-chevron { transform: rotate(180deg); }
+    .section-body { border-top: 1px solid rgba(248,245,234,0.1); padding: 10px; display: grid; gap: 10px; }
+    .city-section { border: 0; border-radius: 0; overflow: visible; background: transparent; }
+    .city-section > summary { list-style: none; cursor: pointer; padding: 6px 2px 9px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .city-section > summary::-webkit-details-marker { display: none; }
+    .city-section[open] > summary .section-chevron { transform: rotate(180deg); }
+    .city-heading { display: grid; gap: 3px; }
+    .city-heading strong { color: var(--text); font-size: 0.9rem; }
+    .city-heading span { color: var(--muted); font-size: 0.78rem; }
+    .city-section .results-grid { padding: 0; }
+
+    .directory-card { border-radius: 16px; padding: 0; overflow: clip; scroll-margin-bottom: 128px; }
+    .directory-card > summary { list-style: none; cursor: pointer; padding: 12px; }
+    .directory-card > summary::-webkit-details-marker { display: none; }
+    .card-top { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+    .card-title { margin: 0; font-size: 0.99rem; line-height: 1.18; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 7px;
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--gold-ink);
+      flex: 0 0 auto;
+    }
+    .meta-line { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+    .meta-pill { border: 1px solid var(--line); background: color-mix(in srgb, var(--paper-soft) 82%, transparent); border-radius: 999px; padding: 3px 6px; color: var(--ink); font-size: 0.67rem; line-height: 1; }
+    .card-body { border-top: 1px solid rgba(248,245,234,0.1); padding: 10px 12px 12px; display: grid; gap: 9px; }
+    .description { margin: 0; color: var(--ink); line-height: 1.45; font-size: 0.9rem; font-weight: 600; }
+    .notes { margin: 0; color: var(--muted); line-height: 1.45; font-size: 0.86rem; }
+    .note-list { margin: 0; padding-left: 1.1rem; color: var(--muted); line-height: 1.45; font-size: 0.86rem; display: grid; gap: 4px; }
+    .detail-grid { display: grid; gap: 6px; padding: 9px 10px; border: 1px solid rgba(248,245,234,0.08); border-radius: 12px; background: rgba(255,255,255,0.03); }
+    .detail-row { display: flex; gap: 8px; align-items: start; }
+    .detail-label { min-width: 68px; color: var(--soft); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; flex: 0 0 auto; }
+    .detail-value { color: var(--text); font-size: 0.83rem; line-height: 1.35; overflow-wrap: anywhere; }
+    .detail-link { color: var(--link); text-decoration: underline; text-underline-offset: 2px; font-weight: 800; }
+    .detail-link:hover { color: var(--link-hover); }
+    .event-badge { background: var(--button-bg); color: var(--button-fg); border: 1px solid var(--button-border); }
+    .event-feed { display: grid; gap: 7px; padding: 9px 10px; border: 1px solid rgba(242,200,75,0.18); border-radius: 12px; background: rgba(242,200,75,0.06); }
+    .event-row { display: grid; gap: 2px; font-size: 0.84rem; }
+    .event-row a { color: var(--link); font-weight: 800; }
+    .event-meta { color: var(--muted); font-size: 0.74rem; }
+
+    .empty { border-radius: 18px; padding: 18px; color: var(--muted); }
+    .empty h2 { margin: 0 0 8px; color: var(--text); font-size: 1.15rem; }
+    .empty p { margin: 0; line-height: 1.45; }
+    .footer { margin-top: 18px; color: var(--muted); font-size: 0.87rem; line-height: 1.45; }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; align-items: start; }
+      .mini-stats { justify-content: flex-start; min-width: 0; }
+      .control-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .search-shell { grid-column: 1 / -1; }
+      .results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 650px) {
+      .wrap { width: min(100vw - 16px, 1120px); padding-top: 96px; }
+      .splash { min-height: calc(100svh - 112px); padding: 12px 0 22px; align-content: start; }
+      .hero { padding: 4px 0 8px; }
+      h1 { font-size: clamp(1.55rem, 8vw, 2.18rem); }
+      .lede { font-size: 0.9rem; line-height: 1.4; }
+      .mini-stats { gap: 6px; }
+      .mini-stat { font-size: 0.74rem; padding: 6px 8px; }
+      .choice-panel { padding: 12px; border-radius: 18px; }
+      .choice-actions { grid-template-columns: 1fr; gap: 8px; }
+      .choice-button { padding: 12px; border-radius: 15px; }
+      .control-head { padding: 10px 10px 0; }
+      .control-body { padding: 10px; }
+      .control-grid { gap: 7px; }
+      .search-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+      .search-action { padding: 7px 10px; font-size: 0.78rem; }
+      .search, .select { padding: 10px 11px; border-radius: 12px; font-size: 16px; }
+      .filter-note { font-size: 0.78rem; }
+      .viewbar { margin-top: 13px; }
+      .view-title h2 { font-size: 1rem; }
+      .view-title span { font-size: 0.81rem; }
+      .view-actions button { padding: 8px 10px; font-size: 0.84rem; }
+      .recent-panel { border-radius: 16px; }
+      .recent-panel > summary { padding: 11px; align-items: start; }
+      .recent-copy strong { font-size: 0.9rem; }
+      .recent-copy span, .recent-date { font-size: 0.76rem; }
+      .recent-item { grid-template-columns: 1fr; gap: 7px; }
+      .results-grid { grid-template-columns: 1fr; gap: 7px; }
+      .directory-card > summary { padding: 10px; }
+      .card-body { padding: 9px 10px 10px; }
+      .card-title { font-size: 0.96rem; }
+      .summary { font-size: 0.85rem; }
+      .meta-pill { font-size: 0.69rem; padding: 4px 6px; }
+    }
+    /* Light editorial visual pass: mirrors the latest mockup by moving away from
+       dashboard chrome and toward cream paper, warm ink, and compact search cards. */
+    body {
+      background: var(--page-bg);
+    }
+    .eyebrow, .control-kicker, .control-copy strong, .choice-copy strong, .mini-stat strong { color: var(--label-accent); }
+    .choice-panel, .control-panel, .recent-panel, .directory-card, .empty { background: color-mix(in srgb, var(--paper) 88%, transparent); border-color: var(--line); box-shadow: 0 14px 32px var(--shadow); }
+    .choice-panel { border-radius: 24px; }
+    .choice-button { min-height: 104px; background: var(--panel-strong); border-color: var(--line); }
+    .choice-button.active, .choice-button:hover { background: var(--blue-deep); color: var(--blue-ink); border-color: var(--blue-deep); }
+    .choice-button.active span, .choice-button:hover span, .choice-button.active small, .choice-button:hover small { color: color-mix(in srgb, var(--blue-ink) 78%, transparent); }
+    .search, .select { background: var(--panel-strong); color: var(--ink); border-color: var(--line-strong); }
+    .search::placeholder { color: color-mix(in srgb, var(--muted) 72%, transparent); }
+    .filter-popover { background: color-mix(in srgb, var(--panel-strong) 92%, transparent); color: var(--ink); box-shadow: 0 16px 36px var(--shadow); }
+    .mini-stats { display: none; }
+    .splash { min-height: auto; padding: 12px 0 20px; }
+    @media (max-width: 720px) { .wrap { width: min(100vw - 18px, 1120px); } .choice-actions { grid-template-columns: 1fr; } }
+    /* OS-shaped search screen pass: compact app shell, visual rows, bottom dock. */
+    .wrap { width: min(1120px, calc(100vw - 40px)); padding: 18px 0 96px; }
+    .control-panel { margin-top: 0; border-radius: 28px; overflow: visible; }
+    .control-head { padding: 14px 14px 0; }
+    .control-copy strong { font-size: 1.18rem; color: var(--text); }
+    .control-copy span { font-size: .82rem; }
+    .control-body { padding: 10px 14px 12px; gap: 10px; }
+    .search { border-radius: 19px; padding: 14px 15px; font-size: 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
+    .search-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .search-action { border-radius: 999px; padding: 8px 12px; font-size: .8rem; }
+    .viewbar { display: none; }
+    .directory-shell { margin-top: 10px; padding-bottom: 128px; }
+    .result-section { border: 0; background: transparent; box-shadow: none; }
+    .result-section > summary { padding: 6px 2px 10px; }
+    .section-heading h3 { color: var(--muted); font-size: .78rem; letter-spacing: .11em; text-transform: uppercase; }
+    .section-heading span, .section-chevron { display: none; }
+    .section-body { padding: 0; }
+    .city-section { border: 0; background: transparent; }
+    .city-section > summary { padding: 8px 2px; }
+    .city-heading strong { font-size: .88rem; }
+    .results-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 12px; align-items: start; }
+    .directory-card { border-radius: 21px; background: color-mix(in srgb, var(--card) 94%, transparent); color: var(--ink); scroll-margin-bottom: 128px; }
+    .directory-card > summary { padding: 9px; color: var(--ink); }
+    /* Quick-card media preview: keep the square thumbnail/logo only in the summary
+       rail so expanded cards spend their space on description + details instead of
+       repeating the same asset. The same summary slot also owns the initial-letter
+       gradient fallback when no thumbnail is available. */
+    .card-summary-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; }
+    .summary-thumb { border-radius: 18px; overflow: hidden; background: var(--paper); color: var(--label-accent); box-shadow: inset 0 0 0 1px var(--line-strong); }
+    .summary-thumb { width: 64px; height: 64px; flex: 0 0 auto; display: grid; place-items: center; }
+    .card-top { display: flex; align-items: start; justify-content: space-between; gap: 7px; }
+    .card-title { font-size: .95rem; letter-spacing: -.01em; }
+    .meta-pill, .badge { font-size: .63rem; padding: 3px 6px; background: color-mix(in srgb, var(--paper-soft) 82%, transparent); color: var(--ink); border-color: var(--line); }
+    .thumb-image { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .thumb-fallback { width: 100%; height: 100%; display: grid; place-items: center; font-weight: 900; }
+    .summary-thumb .thumb-fallback { font-size: 1.02rem; }
+    .card-footer { display: grid; justify-items: center; gap: 8px; margin-top: 12px; }
+    .card-divider { color: var(--acadian-yellow); font-size: .76rem; font-weight: 900; letter-spacing: .22em; text-align: center; text-shadow: 0 1px 0 color-mix(in srgb, var(--paper) 70%, transparent); }
+    .full-page-link { display: inline-flex; align-items: center; gap: 6px; width: fit-content; margin: 0 auto; padding: 8px 12px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--acadian-yellow) 24%, var(--line)); background: var(--glass, color-mix(in srgb, var(--paper) 72%, transparent)); color: var(--acadian-yellow); font-size: .84rem; font-weight: 900; text-decoration: none; text-underline-offset: 3px; text-align: center; box-shadow: 0 10px 22px color-mix(in srgb, var(--shadow) 36%, transparent); backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2); }
+    .full-page-link:hover { color: var(--acadian-yellow); background: color-mix(in srgb, var(--paper) 86%, transparent); border-color: color-mix(in srgb, var(--acadian-yellow) 36%, var(--line)); }
+    .card-body { padding: 0 12px 12px; }
+    .tool-dock { display: none; }
+    @media (max-width: 720px) {
+      .wrap { width: min(430px, 100vw); padding: 14px 14px 86px; }
+      .results-grid { grid-template-columns: 1fr; gap: 8px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/site-shell.css" />
+</head>
+<body>
+  <script src="assets/site-shell.js"></script>
+  <div class="wrap">
+    <div class="directory-utility"><a class="mini-stat project-log-link" id="project-log-link" href="home-feed.html">View Project Log ↗</a></div>
+    <section class="splash" id="splash-panel" aria-label="Directory start">
+      <section class="hero">
+      <div>
+        <div class="eyebrow" id="dir-eyebrow">Manila EDM directory</div>
+        <h1 id="dir-title">Browse local places.</h1>
+        <p class="lede" id="dir-lede">Search now lives inside the directory: browse, search, or filter the same cards without jumping pages.</p>
+      </div>
+      <aside class="mini-stats" aria-label="Directory status">
+        <button class="mini-stat" data-target="official-section"><strong id="entry-stat">…</strong> <span id="entry-stat-label">entries</span></button>
+        <span class="mini-stat"><strong id="category-stat">…</strong> <span id="category-stat-label">categories</span></span>
+        <span class="mini-stat"><strong id="city-stat">…</strong> <span id="city-stat-label">cities</span></span>
+        <a class="mini-stat" href="recents.html"><strong id="draft-stat">…</strong> <span id="draft-stat-label">previews</span></a>
+      </aside>
+    </section>
+
+    <section class="choice-panel" id="choice-panel" aria-label="Choose how to use the directory">
+      <div class="choice-copy">
+        <strong id="dir-choice-kicker">Start here</strong>
+        <h2 id="dir-choice-title">View Everyone</h2>
+        <p id="dir-choice-copy">Search lives in the directory now. This page is the steady browse surface for all published local cards.</p>
+      </div>
+      <div class="choice-actions">
+        <button class="choice-button" id="choose-discover" type="button">
+          <small id="dir-discover-kicker">Browse freely</small>
+          <b id="dir-discover-title">Show all places</b>
+          <span id="dir-discover-copy">Browse the full directory as one alphabetical stack.</span>
+        </button>
+        <button class="choice-button" id="choose-search" type="button">
+          <small id="dir-search-kicker">Find directly</small>
+          <b id="dir-search-choice-title">Open cards</b>
+          <span id="dir-search-choice-copy">Open the directory surface above the cards for names, areas, categories, and attached event terms.</span>
+        </button>
+      </div>
+    </section>
+    </section>
+
+    <section class="body-search" id="search-surface" hidden>
+      <div class="search-surface-actions" aria-label="Search shortcuts">
+        <button class="search-pill" id="view-all-results" type="button">View all</button>
+        <button class="search-pill" id="open-filters" type="button">Filters</button>
+      </div>
+      <section class="control-panel glass">
+        <div class="control-body">
+          <div class="control-grid search-shell">
+            <div class="search-field">
+              <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Places, categories, or event terms…" aria-label="Search Manila EDM" />
+              <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>×</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="filter-popover" id="filter-popover" hidden>
+        <div class="filter-backdrop" id="filter-backdrop" aria-hidden="true"></div>
+        <div class="filter-sheet" role="dialog" aria-modal="true" aria-label="Filters">
+          <div class="filter-title">
+            <span>Filters</span>
+            <button id="close-filters" type="button" aria-label="Close filters">✕</button>
+          </div>
+          <div class="control-grid">
+            <select id="mood-select" class="select" aria-label="Mood">
+              <option value="">Any vibe</option>
+              <option value="food">Food, cafés & treats</option>
+              <option value="waterfront">Waterfront / out for a walk</option>
+              <option value="family">Family-friendly</option>
+              <option value="night">Music, drinks & night out</option>
+            </select>
+            <select id="category-select" class="select" aria-label="Category">
+              <option value="all">All categories</option>
+            </select>
+            <select id="city-select" class="select" aria-label="Area">
+              <option value="all">All areas</option>
+            </select>
+          </div>
+          <div class="filter-actions">
+            <button type="button" id="reset-filters">Reset</button>
+            <button type="button" id="apply-filters">Done</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Search now lives in this page; the directory shell handles browse + filter in one place. -->
+
+    <div class="tool-dock" aria-label="Return to top">
+      <button class="tool-fab" id="to-top" type="button" aria-label="Return to top of page">
+        <span class="tool-fab-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <section class="directory-shell" id="directory-shell" hidden>
+      <div class="viewbar" id="directory-results">
+        <div class="view-title">
+          <h2 id="dir-results-title">Places</h2>
+          <span id="result-copy">Showing local places.</span>
+        </div>
+        <div class="view-actions">
+          <button id="show-all">All places</button>
+          <button id="view-official">Jump to list</button>
+          <button id="clear-filters">Clear</button>
+        </div>
+      </div>
+
+      <main id="app"></main>
+    </section>
+
+    <div class="footer" id="dir-footer"></div>
+  </div>
+  <script>
+    const state = {
+      items: [],
+      events: [],
+      locations: [],
+      eventIndex: new Map(),
+      locationIndex: new Map(),
+      category: 'all',
+      city: 'all',
+      query: '',
+      lens: '',
+      intent: 'intro',
+    };
+    const DIR_COPY = {
+      en: {
+        brandSubtitle: 'Community directory', navSearch: '🔎', navEvents: 'Events', navHome: 'Home', eyebrow: 'Manila EDM directory', title: 'Browse local places.', lede: 'Find now lives inside the directory: open the directory surface, then browse or filter the same cards without jumping pages.', entries: 'entries', categories: 'categories', cities: 'cities', previews: 'previews',
+        choiceKicker: 'Start here', choiceTitle: 'View Everyone', choiceCopy: 'Browse lives here. Direct mode is the other path.', discoverKicker: 'Browse freely', discoverTitle: 'Show all places', discoverCopy: 'Open every published card in one alphabetical stack.', searchKicker: 'Direct mode', searchChoiceTitle: 'Open cards on demand', searchChoiceCopy: 'Keep the directory quiet until you need the results.',
+        searchTitle: '', searchIntro: '', searchPlaceholder: 'Places, categories, or event terms…', moreOptions: 'Filters', showMatches: '', clear: 'Clear', filterOptions: 'Filters', closeFilters: 'Close filters', anyVibe: 'Any vibe', moodFood: 'Food, cafés & treats', moodWaterfront: 'Waterfront / out for a walk', moodFamily: 'Family-friendly', moodNight: 'Music, drinks & night out',
+        allCategories: 'All categories', allAreas: 'All areas', done: 'Done', reset: 'Reset', filterNote: '', resultsTitle: 'Places', resultDefault: 'Showing local places.', searchReady: 'Ready to browse.', allPlaces: 'View all', jumpToList: 'Jump to list', footer: '', timestampUnavailable: 'Timestamp unavailable', dateTbd: 'Date TBD', preview: 'preview', noRecentEntries: 'No recent entries yet.', relatedEvents: 'Related events', linkedCalendarItem: 'linked calendar item', location: 'Location', eventSingular: 'event', eventPlural: 'events', next7Days: 'next 7 days', address: 'Address', hours: 'Hours', phone: 'Phone', email: 'Email', website: 'Website', viewFullPage: 'View full page', descriptionComingSoon: 'Public description coming soon.', placeSingular: 'place', placePlural: 'places', searchLabel: 'query', matching: 'matching', showing: 'Showing', alphabetically: 'alphabetically', projectLog: 'View Project Log ↗', noMatchesTitle: 'No matches yet.', noMatchesBody: 'Clear filters or try a broader query.', loadFailed: 'Directory failed to load.'
+      },
+      fr: {
+        brandSubtitle: 'Répertoire communautaire', navSearch: '🔎', navEvents: 'Événements', navHome: 'Accueil', eyebrow: 'Répertoire Manila EDM', title: 'Parcourir les lieux locaux.', lede: 'La découverte vit maintenant dans le répertoire : ouvrez la surface du répertoire, puis parcourez ou filtrez les mêmes cartes sans changer de page.', entries: 'entrées', categories: 'catégories', cities: 'villes', previews: 'aperçus',
+        choiceKicker: 'Commencez ici', choiceTitle: 'Vue du répertoire complet.', choiceCopy: 'La navigation vit ici. Le mode direct est l’autre chemin.', discoverKicker: 'Parcourir librement', discoverTitle: 'Voir tous les lieux', discoverCopy: 'Ouvrez chaque fiche publiée en une pile alphabétique.', searchKicker: 'Mode direct', searchChoiceTitle: 'Ouvrir les cartes au besoin', searchChoiceCopy: 'Gardez le répertoire discret jusqu’à ce que vous vouliez les résultats.',
+        searchTitle: '', searchIntro: '', searchPlaceholder: 'Lieux, catégories ou termes d’événements…', moreOptions: 'Filtres', showMatches: '', clear: 'Effacer', filterOptions: 'Filtres', closeFilters: 'Fermer les filtres', anyVibe: 'Toute ambiance', moodFood: 'Restos, cafés et gâteries', moodWaterfront: 'Bord de l’eau / promenade', moodFamily: 'Familial', moodNight: 'Musique, sorties et soirée',
+        allCategories: 'Toutes les catégories', allAreas: 'Tous les secteurs', done: 'Terminer', reset: 'Réinitialiser', filterNote: '', resultsTitle: 'Lieux', resultDefault: 'Affichage des lieux locaux.', searchReady: 'Prêt à parcourir.', allPlaces: 'Voir tout', jumpToList: 'Aller à la liste', footer: '', timestampUnavailable: 'Horodatage indisponible', dateTbd: 'Date à confirmer', preview: 'aperçu', noRecentEntries: 'Aucune entrée récente.', relatedEvents: 'Événements liés', linkedCalendarItem: 'élément du calendrier lié', location: 'Lieu', eventSingular: 'événement', eventPlural: 'événements', next7Days: '7 prochains jours', address: 'Adresse', hours: 'Heures', phone: 'Téléphone', email: 'Courriel', website: 'Site web', viewFullPage: 'Voir la page complète', descriptionComingSoon: 'Description publique à venir.', placeSingular: 'lieu', placePlural: 'lieux', searchLabel: 'requête', matching: 'correspondant à', showing: 'Affichage de', alphabetically: 'par ordre alphabétique', projectLog: 'Voir le journal du projet ↗', noMatchesTitle: 'Aucun résultat pour le moment.', noMatchesBody: 'Effacez les filtres ou essayez une requête plus large.', loadFailed: 'Échec du chargement du répertoire.'
+      }
+    };
+    function copy() { return DIR_COPY[currentLang()] || DIR_COPY.en; }
+    function setText(id, value) { const el = document.getElementById(id); if (el) el.textContent = value; }
+    function applyTheme(theme) { document.documentElement.dataset.theme = theme; localStorage.setItem('acadie-theme', theme); updateMenuControls(); }
+    const savedTheme = localStorage.getItem('acadie-theme');
+    if (savedTheme) applyTheme(savedTheme);
+    document.documentElement.classList.add('route-pending');
+    /* Language toggle — shared with events.html and entry.html */
+    function currentLang() {
+      const saved = localStorage.getItem('acadie-lang');
+      if (saved === 'fr' || saved === 'en') return saved;
+      return /^fr\b/i.test(navigator.language || '') ? 'fr' : 'en';
+    }
+    function updateMenuControls() {
+      document.documentElement.dataset.lang = currentLang();
+      const isDark = document.documentElement.dataset.theme === 'dark';
+      const themeButton = document.getElementById('theme-toggle');
+      if (themeButton) {
+        const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+        themeButton.textContent = isDark ? '☼' : '☾';
+        themeButton.setAttribute('aria-label', label);
+        themeButton.setAttribute('title', label);
+      }
+      const langButton = document.getElementById('lang-toggle');
+      if (langButton) {
+        const isFr = currentLang() === 'fr';
+        langButton.setAttribute('aria-label', isFr ? 'Switch language to English' : 'Switch language to Tagalog');
+        langButton.setAttribute('title', isFr ? 'Français actif — passer en anglais' : 'English active — switch to Tagalog');
+      }
+    }
+    function renderDirectory() { renderControls(); renderRecent(); renderResults(); }
+    function updateDirCopy() {
+      const c = copy();
+      updateMenuControls(); setText('dir-brand-subtitle', c.brandSubtitle);
+      setText('dir-eyebrow', c.eyebrow); setText('dir-title', c.title); setText('dir-lede', c.lede);
+      setText('entry-stat-label', c.entries); setText('category-stat-label', c.categories); setText('city-stat-label', c.cities); setText('draft-stat-label', c.previews); setText('project-log-link', c.projectLog);
+      setText('dir-choice-kicker', c.choiceKicker); setText('dir-choice-title', c.choiceTitle); setText('dir-choice-copy', c.choiceCopy);
+      setText('dir-discover-kicker', c.discoverKicker); setText('dir-discover-title', c.discoverTitle); setText('dir-discover-copy', c.discoverCopy);
+      setText('dir-search-kicker', c.searchKicker); setText('dir-search-choice-title', c.searchChoiceTitle); setText('dir-search-choice-copy', c.searchChoiceCopy);
+      setText('open-filters', c.moreOptions);
+      setText('apply-filters', c.done); setText('reset-filters', c.reset);
+      setText('dir-results-title', c.resultsTitle); setText('result-copy', c.resultDefault); setText('show-all', c.allPlaces); setText('view-official', c.jumpToList); setText('clear-filters', c.clear); setText('dir-footer', c.footer);
+      document.getElementById('search')?.setAttribute('placeholder', c.searchPlaceholder);
+      document.getElementById('search-clear')?.setAttribute('aria-label', c.clear);
+      document.getElementById('close-filters')?.setAttribute('aria-label', c.closeFilters);
+      const mood = document.getElementById('mood-select');
+      if (mood) [c.anyVibe, c.moodFood, c.moodWaterfront, c.moodFamily, c.moodNight].forEach((label, index) => { if (mood.options[index]) mood.options[index].textContent = label; });
+    }
+    window.addEventListener('acadie:languagechange', () => { updateDirCopy(); renderDirectory(); });
+    document.documentElement.lang = currentLang();
+    updateDirCopy();
+
+    const lensTerms = {
+      food: ['food', 'restaurant', 'cafe', 'coffee', 'pizza', 'breakfast', 'brunch', 'donut', 'burger', 'deli', 'ice cream', 'treat', 'grocery'],
+      waterfront: ['waterfront', 'marina', 'beach', 'promenade', 'youghall', 'queen elizabeth', 'cunard', 'seasonal', 'patio'],
+      family: ['family', 'library', 'cinema', 'bowling', 'park', 'beach', 'breakfast', 'walmart', 'arena', 'campus'],
+      night: ['bar', 'lounge', 'brew', 'brewery', 'night', 'pub', 'music', 'event', 'taproom', 'distillery']
+    };
+
+    const tagHints = [
+      'waterfront', 'pizza', 'coffee', 'breakfast', 'brunch', 'family', 'auto', 'music', 'bar', 'lounge', 'brewery', 'taproom',
+      'beach', 'library', 'cinema', 'bowling', 'grocery', 'campus', 'hotel', 'mall', 'drive-thru', 'seasonal', 'event', 'patio'
+    ];
+
+    async function loadData() {
+      const [directory, events, locations] = await Promise.all([
+        fetch('assets/directory-data.json', { cache: 'no-store' }).then(res => {
+          if (!res.ok) throw new Error(`Failed to load directory data (${res.status})`);
+          return res.json();
+        }),
+        fetch('assets/events-data.json', { cache: 'no-store' }).then(res => res.ok ? res.json() : { items: [] }).catch(() => ({ items: [] })),
+        fetch('assets/locations-data.json', { cache: 'no-store' }).then(res => res.ok ? res.json() : { items: [] }).catch(() => ({ items: [] }))
+      ]);
+      return { directory, events, locations };
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function normalize(value) { return String(value || '').toLowerCase(); }
+    function localizedText(value) {
+      if (value && typeof value === 'object') {
+        const lang = currentLang();
+        return value[lang] || value.en || value.fr || value.shiac || '';
+      }
+      return value || '';
+    }
+    function cleanSummary(value) { return String(value || '').replace(/\s+/g, ' ').trim(); }
+    function safeImageSrc(value) {
+      const raw = String(value || '').trim();
+      if (!raw || raw.startsWith('//')) return '';
+      try {
+        const url = new URL(raw, document.baseURI);
+        return (url.protocol === 'http:' || url.protocol === 'https:') ? url.href : '';
+      } catch {
+        return '';
+      }
+    }
+    function modifiedTs(item) {
+      const numeric = Number(item?.source_modified_ts || 0);
+      if (Number.isFinite(numeric) && numeric > 0) return numeric;
+      const parsed = Date.parse(item?.source_modified_at || '');
+      return Number.isFinite(parsed) ? Math.floor(parsed / 1000) : 0;
+    }
+    function formatTimestamp(value) {
+      const numeric = Number(value || 0);
+      if (!Number.isFinite(numeric) || numeric <= 0) return copy().timestampUnavailable;
+      return new Intl.DateTimeFormat(currentLang(), {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit'
+      }).format(new Date(numeric * 1000));
+    }
+    function phoneHref(value) {
+      const digits = cleanSummary(value).replace(/[^\d+]/g, '');
+      return digits ? `tel:${digits}` : '';
+    }
+    function mapsHref(value) {
+      const query = encodeURIComponent(cleanSummary(value));
+      return query ? `https://www.google.com/maps/search/?api=1&query=${query}` : '';
+    }
+    function renderDetailValue(type, value) {
+      const text = cleanSummary(value);
+      if (!text) return '';
+      if (type === 'phone') {
+        const href = phoneHref(text);
+        return href ? `<a class="detail-link" href="${href}">${escapeHtml(text)}</a>` : escapeHtml(text);
+      }
+      if (type === 'address') {
+        const href = mapsHref(text);
+        return href ? `<a class="detail-link" href="${href}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>` : escapeHtml(text);
+      }
+      if (type === 'email') {
+        return `<a class="detail-link" href="mailto:${encodeURIComponent(text)}">${escapeHtml(text)}</a>`;
+      }
+      if (type === 'website') {
+        const href = /^https?:\/\//i.test(text) ? text : `https://${text}`;
+        return `<a class="detail-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
+      }
+      return escapeHtml(text);
+    }
+    function sourceLabel(src) {
+      if (!src) return '';
+      if (src === 'In person') return 'In person';
+      try { return new URL(src).hostname.replace(/^www\./, ''); } catch { return src; }
+    }
+
+    function publicCity(item) {
+      const declared = String(item.public_area || '').trim();
+      if (declared) return declared;
+      const area = String(item.area || '').trim();
+      if (/bathurst/i.test(area)) return 'Metro Manila';
+      return area || 'Unsorted';
+    }
+
+    function contactValue(item, key) {
+      return (item.contact && item.contact[key]) || item[key] || '';
+    }
+
+    function itemHaystack(item) {
+      const eventTerms = relatedEventsFor(item).flatMap(event => [
+        publicEventTitle(event),
+        event.description,
+        event.notes,
+        event.summary,
+        event.category,
+        event.location_name,
+        event.venue,
+        event.computed_status,
+        ...(Array.isArray(event.tags) ? event.tags : []),
+        ...(Array.isArray(event.badges) ? event.badges : []),
+      ]);
+      return [
+        item.title, item.name, item.category, item.area, publicCity(item), item.description, item.notes,
+        contactValue(item, 'address'), contactValue(item, 'hours'), contactValue(item, 'phone'), contactValue(item, 'email'), contactValue(item, 'website'),
+        ...(item.tags || []), ...(item.aliases || []), ...(item.related_places || []), ...(item.sources || []),
+        ...eventTerms
+      ].map(normalize).join(' ');
+    }
+
+    function displayTags(item) {
+      const seen = new Set();
+      const blocked = new Set([normalize(item.category), normalize(publicCity(item)), normalize(item.area)]);
+      return (Array.isArray(item.tags) ? item.tags : [])
+        .map(cleanSummary)
+        .filter(Boolean)
+        .filter(tag => {
+          const key = normalize(tag);
+          if (seen.has(key) || blocked.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+    }
+
+    function derivedTags(item) {
+      return displayTags(item);
+    }
+
+    function matchesLens(item) {
+      if (!state.lens) return true;
+      const hay = itemHaystack(item);
+      return (lensTerms[state.lens] || []).some(term => hay.includes(term));
+    }
+
+    function filteredItems() {
+      const q = normalize(state.query).trim();
+      let items = state.items.filter(item => {
+        const hay = itemHaystack(item);
+        const categoryOk = state.category === 'all' || normalize(item.category) === state.category;
+        const cityOk = state.city === 'all' || normalize(publicCity(item)) === state.city;
+        const queryOk = !q || q.split(/\s+/).filter(Boolean).every(term => hay.includes(term));
+        return categoryOk && cityOk && queryOk && matchesLens(item);
+      });
+
+      items.sort((a, b) => {
+        const statusRank = Number(Boolean(a.draft)) - Number(Boolean(b.draft));
+        return statusRank || String(a.title || '').localeCompare(String(b.title || ''));
+      });
+      return items;
+    }
+
+    function recentItems(limit = 10) {
+      return [...state.items]
+        .sort((a, b) => modifiedTs(b) - modifiedTs(a) || String(a.title || '').localeCompare(String(b.title || '')))
+        .slice(0, limit);
+    }
+
+    function updateStats(data) {
+      const items = data.items || [];
+      const categories = new Set(items.map(i => i.category).filter(Boolean));
+      const cities = new Set(items.map(publicCity).filter(Boolean));
+      document.getElementById('entry-stat').textContent = items.filter(i => !i.draft).length;
+      document.getElementById('category-stat').textContent = categories.size;
+      document.getElementById('city-stat').textContent = cities.size;
+      document.getElementById('draft-stat').textContent = items.filter(i => i.draft).length;
+    }
+
+    function renderControls() {
+      const categories = [...new Set(state.items.map(i => i.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+      const cities = [...new Set(state.items.map(publicCity).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+
+      const categorySelect = document.getElementById('category-select');
+      if (categorySelect) {
+        categorySelect.innerHTML = `<option value="all">${escapeHtml(copy().allCategories)}</option>` +
+          categories.map(cat => `<option value="${escapeHtml(normalize(cat))}">${escapeHtml(cat)}</option>`).join('');
+      }
+
+      const citySelect = document.getElementById('city-select');
+      if (citySelect) {
+        citySelect.innerHTML = `<option value="all">${escapeHtml(copy().allAreas)}</option>` +
+          cities.map(city => `<option value="${escapeHtml(normalize(city))}">${escapeHtml(city)}</option>`).join('');
+      }
+    }
+
+    function renderRecent() {
+      const recentList = document.getElementById('recent-list');
+      if (!recentList) return;
+      const items = recentItems(10);
+      recentList.innerHTML = items.length
+        ? items.map(item => {
+            const city = publicCity(item);
+            const stamp = modifiedTs(item);
+            return `<li class="recent-item">
+              <div>
+                <a class="recent-link" href="#entry-${escapeHtml(item.slug)}">${escapeHtml(localizedText(item.title_localized) || item.title)}</a>
+                <div class="recent-meta">
+                  ${item.category ? `<span class="meta-pill">${escapeHtml(item.category)}</span>` : ''}
+                  ${city ? `<span class="meta-pill">${escapeHtml(city)}</span>` : ''}
+                  ${item.draft ? `<span class="meta-pill">${escapeHtml(copy().preview)}</span>` : ''}
+                </div>
+              </div>
+              <div class="recent-date">${escapeHtml(formatTimestamp(stamp))}</div>
+            </li>`;
+          }).join('')
+        : `<li class="recent-item"><div>${escapeHtml(copy().noRecentEntries)}</div></li>`;
+    }
+
+    function renderNoteBlock(item, notes) {
+      const points = Array.isArray(item.note_points) ? item.note_points.map(cleanSummary).filter(Boolean) : [];
+      if (points.length) return `<ul class="note-list">${points.map(point => `<li>${escapeHtml(point)}</li>`).join('')}</ul>`;
+      return notes ? `<p class="notes">${escapeHtml(notes)}</p>` : '';
+    }
+
+    function parseEventDate(value) {
+      const date = new Date(value || '');
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    function formatEventDate(value) {
+      const date = parseEventDate(value);
+      if (!date) return copy().dateTbd;
+      return new Intl.DateTimeFormat(currentLang(), { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }).format(date);
+    }
+    function publicEventTitle(event) {
+      return String(localizedText(event.title) || event.name || '').replace(/\s+Placeholder\b/i, ' Preview');
+    }
+
+    function relatedEventsFor(item) {
+      const slug = item.slug;
+      const locationId = item.location_id;
+      return state.events
+        .filter(event => {
+          const byEntry = [...(event.host_entry_ids || []), ...(event.performer_entry_ids || []), ...(event.sponsor_entry_ids || [])].includes(slug);
+          const byLocation = locationId && event.location_id === locationId;
+          return byEntry || byLocation;
+        })
+        .sort((a, b) => String(a.starts_at || '').localeCompare(String(b.starts_at || '')));
+    }
+
+    function upcomingEventsFor(item, days = 7) {
+      const now = Date.now();
+      const horizon = now + days * 24 * 60 * 60 * 1000;
+      return relatedEventsFor(item).filter(event => {
+        const start = parseEventDate(event.starts_at);
+        return start && start.getTime() >= now && start.getTime() <= horizon && event.computed_status === 'active';
+      });
+    }
+
+    function renderEventFeed(item) {
+      const related = relatedEventsFor(item);
+      if (!related.length) return '';
+      return `<div class="event-feed">
+        <div class="detail-label">${escapeHtml(copy().relatedEvents)}</div>
+        ${related.map(event => `<div class="event-row">
+          <div><a href="events.html#event-${escapeHtml(event.id)}">${escapeHtml(publicEventTitle(event))}</a></div>
+          <div class="event-meta">${escapeHtml(formatEventDate(event.starts_at))} · ${escapeHtml(copy().linkedCalendarItem)}</div>
+        </div>`).join('')}
+      </div>`;
+    }
+
+    function renderLocationContext(item) {
+      const location = state.locationIndex.get(item.location_id);
+      if (!location) return '';
+      return `<div class="detail-row"><div class="detail-label">${escapeHtml(copy().location)}</div><div class="detail-value">${escapeHtml(location.name)}${location.street_id ? ` · ${escapeHtml(location.street_id)}` : ''}</div></div>`;
+    }
+
+    function renderUpcomingBadge(item) {
+      const count = upcomingEventsFor(item).length;
+      return count ? `<span class="badge event-badge">${count} ${escapeHtml(count === 1 ? copy().eventSingular : copy().eventPlural)} ${escapeHtml(copy().next7Days)}</span>` : '';
+    }
+
+    function renderCard(item) {
+      const displayTitle = localizedText(item.title_localized) || item.title;
+      const description = localizedText(item.description_localized) || cleanSummary(item.description || item.summary);
+      const notes = cleanSummary(item.notes);
+      const tags = derivedTags(item);
+      const thumbnailSrc = safeImageSrc(item.thumbnail_src);
+      const thumbnailAlt = cleanSummary(item.thumbnail_alt) || `${displayTitle || 'Entry'} photo`;
+      const thumbFallback = escapeHtml((displayTitle || '?').trim().charAt(0).toUpperCase());
+      const summaryThumb = thumbnailSrc
+        ? `<span class="summary-thumb"><img class="thumb-image" src="${escapeHtml(thumbnailSrc)}" alt="${escapeHtml(thumbnailAlt)}" loading="lazy" /></span>`
+        : `<span class="summary-thumb"><span class="thumb-fallback">${thumbFallback}</span></span>`;
+      const locationContext = renderLocationContext(item);
+      const eventFeed = renderEventFeed(item);
+      const detailRows = [
+        ['address', copy().address, contactValue(item, 'address')],
+        ['hours', copy().hours, contactValue(item, 'hours')],
+        ['phone', copy().phone, contactValue(item, 'phone')],
+        ['email', copy().email, contactValue(item, 'email')],
+        ...(item.draft ? [['website', copy().website, contactValue(item, 'website')]] : []),
+      ].filter(([, , value]) => cleanSummary(value));
+      const entryLink = !item.draft ? `<a class="full-page-link" href="entry.html#${escapeHtml(item.slug)}" target="_top" rel="noopener noreferrer">${escapeHtml(copy().viewFullPage)} ↗</a>` : '';
+      return `
+        <details class="directory-card" id="entry-${escapeHtml(item.slug)}">
+          <summary>
+            <div class="card-summary-row">
+              ${summaryThumb}
+              <span class="card-main">
+                <span class="card-top">
+                  <h3 class="card-title">${escapeHtml(displayTitle)}</h3>
+                  ${item.draft ? `<span class="badge">${escapeHtml(copy().preview)}</span>` : ''}
+                  ${renderUpcomingBadge(item)}
+                </span>
+                <span class="meta-line">
+                  ${item.category ? `<span class="meta-pill">${escapeHtml(item.category)}</span>` : ''}
+                  ${tags.slice(0, 1).map(tag => `<span class="meta-pill">#${escapeHtml(tag)}</span>`).join('')}
+                </span>
+              </span>
+            </div>
+          </summary>
+          <div class="card-body">
+            ${description ? `<p class="description">${escapeHtml(description)}</p>` : `<p class="description">${escapeHtml(copy().descriptionComingSoon)}</p>`}
+            ${renderNoteBlock(item, notes)}
+            ${(detailRows.length || locationContext) ? `<div class="detail-grid">${detailRows.map(([type, label, value]) => `<div class="detail-row"><div class="detail-label">${escapeHtml(label)}</div><div class="detail-value">${renderDetailValue(type, value)}</div></div>`).join('')}${locationContext}</div>` : ''}
+            ${eventFeed}
+            ${entryLink ? `<div class="card-footer"><div class="card-divider" aria-hidden="true">⁜ ─────✧❅✦❅✧───── ⁜</div>${entryLink}</div>` : ''}
+          </div>
+        </details>`;
+    }
+
+    function groupByCity(items) {
+      return items.reduce((groups, item) => {
+        const city = publicCity(item) || 'Unsorted';
+        if (!groups.has(city)) groups.set(city, []);
+        groups.get(city).push(item);
+        return groups;
+      }, new Map());
+    }
+
+    function renderCityGroups(items) {
+      const groups = [...groupByCity(items).entries()].sort(([a], [b]) => a.localeCompare(b));
+      return groups.map(([city, cityItems]) => `<details class="city-section">
+        <summary>
+          <div class="city-heading"><strong>${escapeHtml(city)}</strong><span>${cityItems.length} ${escapeHtml(cityItems.length === 1 ? copy().placeSingular : copy().placePlural)}</span></div>
+          <span class="section-chevron" aria-hidden="true">▾</span>
+        </summary>
+        <div class="results-grid">${cityItems.map(renderCard).join('')}</div>
+      </details>`).join('');
+    }
+
+    function renderSection(id, title, subtitle, items, options = {}) {
+      if (!items.length) return '';
+      const openAttr = options.open ? ' open' : '';
+      const body = options.groupByCity ? renderCityGroups(items) : `<div class="results-grid">${items.map(renderCard).join('')}</div>`;
+      return `<details class="result-section glass" id="${escapeHtml(id)}"${openAttr}>
+        <summary>
+          <div class="section-heading"><h3>${escapeHtml(title)}</h3><span>${escapeHtml(subtitle)}</span></div>
+          <span class="section-chevron" aria-hidden="true">▾</span>
+        </summary>
+        <div class="section-body">${body}</div>
+      </details>`;
+    }
+
+    function syncSearchClear() {
+      const search = document.getElementById('search');
+      const clear = document.getElementById('search-clear');
+      if (clear) clear.hidden = !(search && search.value.trim().length);
+    }
+
+    function renderResults() {
+      const app = document.getElementById('app');
+      const resultCopy = document.getElementById('result-copy');
+      const showAllButton = document.getElementById('show-all');
+
+      const items = filteredItems();
+      const filters = [];
+      const hasIntent = Boolean(state.query || state.lens || state.category !== 'all' || state.city !== 'all');
+      const showResults = state.intent === 'browse' || hasIntent;
+      if (state.query) filters.push(`${copy().searchLabel} “${state.query}”`);
+      if (state.lens) filters.push(document.getElementById('mood-select').selectedOptions[0]?.textContent || state.lens);
+      if (state.category !== 'all') filters.push(document.getElementById('category-select').selectedOptions[0]?.textContent || state.category);
+      if (state.city !== 'all') filters.push(document.getElementById('city-select').selectedOptions[0]?.textContent || state.city);
+
+      showAllButton.classList.toggle('active', state.intent === 'browse' && !hasIntent);
+      syncSearchClear();
+      if (!showResults) {
+        resultCopy.textContent = copy().searchReady;
+        app.hidden = true;
+        app.innerHTML = '';
+        syncHashTarget();
+        return;
+      }
+
+      app.hidden = false;
+      resultCopy.textContent = filters.length ? `${items.length} ${items.length === 1 ? copy().placeSingular : copy().placePlural} ${copy().matching} ${filters.join(' + ')}.` : `${copy().showing} ${items.length} ${items.length === 1 ? copy().placeSingular : copy().placePlural} ${copy().alphabetically}.`;
+      app.innerHTML = items.length
+        ? `<div class="flat-results results-grid">${items.map(renderCard).join('')}</div>`
+        : `<div class="empty"><h2>${escapeHtml(copy().noMatchesTitle)}</h2><p>${escapeHtml(copy().noMatchesBody)}</p></div>`;
+      syncHashTarget();
+    }
+
+    function openParentDetails(target) {
+      let node = target?.parentElement;
+      while (node) {
+        if (node.tagName === 'DETAILS') node.open = true;
+        node = node.parentElement;
+      }
+    }
+
+    function focusSection(id) {
+      const section = document.getElementById(id);
+      if (!section) return;
+      section.open = true;
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function closeFilterPopover() {
+      const popover = document.getElementById('filter-popover');
+      if (popover) popover.hidden = true;
+      document.documentElement.classList.remove('filters-open');
+    }
+
+    function toggleFilterPopover(forceOpen) {
+      const popover = document.getElementById('filter-popover');
+      const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !!popover?.hidden;
+      if (popover) popover.hidden = !shouldOpen;
+      document.documentElement.classList.toggle('filters-open', shouldOpen);
+      return shouldOpen;
+    }
+    function setSearchSurfaceVisible(visible) {
+      const surface = document.getElementById('search-surface');
+      if (surface) surface.hidden = !visible;
+    }
+
+    function setDirectoryIntent(intent, options = {}) {
+      state.intent = intent;
+      const isIntro = intent === 'intro';
+      const isBrowse = intent === 'browse';
+      const isSearch = intent === 'search';
+      setSearchSurfaceVisible(!isIntro);
+      document.getElementById('splash-panel').hidden = !isIntro;
+      document.getElementById('directory-shell').hidden = isIntro;
+      document.getElementById('choose-discover')?.classList.toggle('active', isBrowse);
+      document.getElementById('choose-search')?.classList.toggle('active', isSearch);
+      if (isSearch) {
+        closeFilterPopover();
+        if (options.render !== false) renderResults();
+        const search = document.getElementById('search');
+        if (options.focus !== false) requestAnimationFrame(() => search?.focus());
+      }
+      closeFilterPopover();
+      if (!isIntro && options.render !== false) renderResults();
+      if (options.scroll) {
+        const target = document.getElementById('directory-results');
+        target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function syncHashTarget() {
+      const hash = window.location.hash;
+      if (!hash.startsWith('#entry-')) return;
+      let targetId = '';
+      try { targetId = decodeURIComponent(hash.slice(1)).trim(); }
+      catch { return; }
+      if (!targetId) return;
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      openParentDetails(target);
+      target.open = true;
+    }
+
+    function clearFilters(options = {}) {
+      const { render = true } = options;
+      state.category = 'all';
+      state.city = 'all';
+      state.query = '';
+      state.lens = '';
+      const search = document.getElementById('search'); if (search) search.value = '';
+      syncSearchClear();
+      const mood = document.getElementById('mood-select'); if (mood) mood.value = '';
+      const category = document.getElementById('category-select'); if (category) category.value = 'all';
+      const city = document.getElementById('city-select'); if (city) city.value = 'all';
+      if (render) renderResults();
+    }
+
+    function bindEvents() {
+      const menuToggle = document.getElementById('menu-toggle');
+      menuToggle?.addEventListener('change', () => {
+        if (menuToggle.checked) closeFilterPopover();
+      });
+      document.getElementById('choose-discover')?.addEventListener('click', () => {
+        clearFilters();
+        history.replaceState(null, '', '#browse');
+        setDirectoryIntent('browse', { scroll: true, focus: false });
+      });
+      document.getElementById('choose-search')?.addEventListener('click', () => {
+        clearFilters({ render: false });
+        history.replaceState(null, '', '#search');
+        setDirectoryIntent('search', { scroll: true, focus: true });
+      });
+      document.getElementById('to-top')?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      document.querySelectorAll('.mini-stat[data-target]').forEach(button => {
+        button.addEventListener('click', () => {
+          setDirectoryIntent('browse', { scroll: false, focus: false });
+          focusSection(button.dataset.target);
+        });
+      });
+      document.getElementById('show-all')?.addEventListener('click', () => { clearFilters({ render: false }); setDirectoryIntent('browse', { scroll: false, focus: false }); });
+      document.getElementById('view-official')?.addEventListener('click', () => { setDirectoryIntent('browse', { scroll: false, focus: false }); document.getElementById('directory-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      document.getElementById('clear-filters')?.addEventListener('click', () => clearFilters());
+      document.getElementById('search-clear')?.addEventListener('click', () => { clearFilters({ render: true }); const search = document.getElementById('search'); search?.focus(); });
+      document.getElementById('search')?.addEventListener('input', event => {
+        state.query = event.target.value;
+        syncSearchClear();
+        renderResults();
+      });
+      document.getElementById('search')?.addEventListener('focus', () => setDirectoryIntent('search', { scroll: false, focus: false }));
+      document.getElementById('search')?.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          renderResults();
+          event.currentTarget?.blur();
+        }
+      });
+      document.getElementById('mood-select')?.addEventListener('change', event => {
+        state.lens = event.target.value;
+        renderResults();
+      });
+      document.getElementById('category-select')?.addEventListener('change', event => {
+        state.category = event.target.value || 'all';
+        renderResults();
+      });
+      document.getElementById('city-select')?.addEventListener('change', event => {
+        state.city = event.target.value || 'all';
+        renderResults();
+      });
+      document.getElementById('view-all-results')?.addEventListener('click', () => {
+        clearFilters({ render: false });
+        history.replaceState(null, '', '#browse');
+        setDirectoryIntent('browse', { scroll: true, focus: false });
+      });
+      document.getElementById('open-filters')?.addEventListener('click', () => { toggleFilterPopover(); });
+      document.getElementById('close-filters')?.addEventListener('click', closeFilterPopover);
+      document.getElementById('filter-backdrop')?.addEventListener('click', closeFilterPopover);
+      window.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeFilterPopover();
+      });
+      document.getElementById('apply-filters')?.addEventListener('click', () => {
+        closeFilterPopover();
+        renderResults();
+        setDirectoryIntent('browse', { scroll: false, focus: false });
+      });
+      document.getElementById('reset-filters')?.addEventListener('click', () => clearFilters({ render: true }));
+      window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#search') {
+          setDirectoryIntent('search', { scroll: false, focus: true });
+          return;
+        }
+        if (window.location.hash === '#browse') {
+          setDirectoryIntent('browse', { scroll: false, focus: false });
+          return;
+        }
+        syncHashTarget();
+      });
+    }
+
+    loadData().then(data => {
+      const directory = data.directory || {};
+      state.items = directory.items || [];
+      state.events = data.events?.items || [];
+      state.locations = data.locations?.items || [];
+      state.eventIndex = new Map(state.events.map(event => [event.id, event]));
+      state.locationIndex = new Map(state.locations.map(location => [location.id, location]));
+      updateStats(directory);
+      renderControls();
+      renderRecent();
+      bindEvents();
+      setDirectoryIntent(window.location.hash === '#search' ? 'search' : window.location.hash === '#browse' ? 'browse' : 'intro', { scroll: false, focus: false, render: true });
+      if (window.location.hash.startsWith('#entry-')) setDirectoryIntent('browse', { scroll: false, focus: false });
+      document.documentElement.classList.remove('route-pending');
+    }).catch(err => {
+      document.documentElement.classList.remove('route-pending');
+      document.getElementById('entry-stat').textContent = '!';
+      document.getElementById('app').innerHTML = `<div class="empty"><h2>${escapeHtml(copy().loadFailed)}</h2><p>${escapeHtml(err.message)}</p></div>`;
+      console.error(err);
+    });
+  </script>
+</body>
+</html>

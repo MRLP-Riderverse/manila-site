@@ -1,0 +1,112 @@
+/*
+  Acadie.sol global colour shell
+  ---------------------------------------------------------------------------
+  This file owns the site-wide light/dark palette tokens. Individual pages keep
+  their layout rules, but they should reference these variables instead of
+  redefining page-local colour schemes.
+*/
+:root {
+  color-scheme: light;
+
+  /* Foundational surfaces */
+  --page-bg: #f5ede1;
+  --bg: #f5ede1;
+  --bg2: #fffaf2;
+  --bg3: #fbf3e7;
+  --panel: #fffaf2;
+  --panel-strong: #fffdf8;
+  --card: #fffaf2;
+  --card-strong: #fffdf8;
+  --paper: #fffaf2;
+  --paper-soft: #fbf3e7;
+
+  /* Text and line system */
+  --ink: #2f261d;
+  --ink-strong: #1a1410;
+  --text: var(--ink);
+  --muted: #5f5247;
+  --soft: #766a5b;
+  --line: rgba(47, 38, 29, 0.16);
+  --line-strong: rgba(47, 38, 29, 0.26);
+
+  /* Brand/accent system */
+  --blue: #174b8e;
+  --blue-deep: #0d2f5e;
+  --blue-ink: #fffaf2;
+  --link: #0d2f5e;
+  --link-hover: #174b8e;
+  --label-accent: #0d2f5e;
+  --gold: #b57910;
+  --acadian-yellow: #f3c85b;
+  --button-bg: var(--blue-deep);
+  --button-bg-hover: color-mix(in srgb, var(--blue-deep) 86%, var(--page-bg));
+  --button-fg: var(--acadian-yellow);
+  --button-border: color-mix(in srgb, var(--acadian-yellow) 74%, transparent);
+  --gold-ink: #1a1410;
+  --red: #bf4a4f;
+
+  /* Shared event/date chips */
+  --calendar-red-top: #bf4a4f;
+  --calendar-red-bottom: #7b1f2a;
+  --calendar-ink: #f3c85b;
+
+  /* Calendar date badges — solid navy companion so the badge reads
+     consistently whether the page background is light parchment or dark panel. */
+  --calendar-badge-bg: #0a2b57;
+
+  /* Depth/glass */
+  --shadow: rgba(65, 47, 29, 0.10);
+  --glass: rgba(10, 43, 87, 0.68);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Foundational surfaces */
+  --page-bg: #0c1626;
+  --bg: #0c1626;
+  --bg2: #10213a;
+  --bg3: #152845;
+  --panel: #10213a;
+  --panel-strong: #17365f;
+  --card: #10213a;
+  --card-strong: #17365f;
+  --paper: #10213a;
+  --paper-soft: #17365f;
+
+  /* Text and line system */
+  --ink: #f0f6ff;
+  --ink-strong: #ffffff;
+  --text: var(--ink);
+  --muted: #bfd2ea;
+  --soft: #9fb6cf;
+  --line: rgba(159, 194, 233, 0.20);
+  --line-strong: rgba(159, 194, 233, 0.34);
+
+  /* Brand/accent system */
+  --blue: #7fb2ef;
+  --blue-deep: #0a2b57;
+  --blue-ink: #f7fbff;
+  --link: #9bc8ff;
+  --link-hover: #d2e6ff;
+  --label-accent: #f3c85b;
+  --gold: #f0c866;
+  --acadian-yellow: #f3c85b;
+  --button-bg: rgba(10, 43, 87, 0.72);
+  --button-bg-hover: rgba(17, 58, 112, 0.84);
+  --button-fg: var(--acadian-yellow);
+  --button-border: color-mix(in srgb, var(--acadian-yellow) 64%, transparent);
+  --gold-ink: #1a1410;
+  --red: #ff7f86;
+
+  /* Shared event/date chips stay brand-stable across themes. */
+  --calendar-red-top: #bf4a4f;
+  --calendar-red-bottom: #7b1f2a;
+  --calendar-ink: #f3c85b;
+  /* Same hex in both modes — keeps the badge recognizable regardless of page bg. */
+  --calendar-badge-bg: #0a2b57;
+
+  /* Depth/glass */
+  --shadow: rgba(0, 0, 0, 0.38);
+  --glass: rgba(8, 31, 61, 0.74);
+}

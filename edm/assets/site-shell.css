@@ -1,0 +1,284 @@
+/* Global Acadie.sol shell chrome.
+   A single mobile launcher and the desktop top bar share one focused menu model.
+   Page styles own content surfaces, not navigation. */
+
+.site-header {
+  position: relative;
+  width: 100%;
+  height: calc(30px + env(safe-area-inset-top));
+  margin: 0 0 12px;
+  padding-top: env(safe-area-inset-top);
+  box-sizing: border-box;
+  z-index: 84;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  color: var(--ink-strong);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 6px 18px -10px var(--shadow);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  font: 900 .7rem/1 monospace;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body { padding-top: 0; }
+.menu-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.shell-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Desktop wrapper: hidden on touch-sized canvases, then replaces—not duplicates—the
+   mobile visual wrapper while retaining the same route data and menu toggle. */
+.site-desktop-nav { display: none; }
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 94;
+  background: rgba(8, 31, 61, .42);
+  backdrop-filter: blur(5px) saturate(.92);
+  -webkit-backdrop-filter: blur(5px) saturate(.92);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, visibility 0s linear .18s;
+}
+
+.drawer {
+  position: fixed;
+  z-index: 95;
+  left: max(14px, env(safe-area-inset-left));
+  right: max(14px, env(safe-area-inset-right));
+  bottom: calc(86px + env(safe-area-inset-bottom));
+  margin: 0 auto;
+  width: min(390px, calc(100% - 28px));
+  max-height: calc(100svh - 130px);
+  overflow-y: auto;
+  padding: 58px 14px 14px;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: var(--glass, color-mix(in srgb, var(--paper) 72%, transparent));
+  backdrop-filter: blur(20px) saturate(1.45);
+  -webkit-backdrop-filter: blur(20px) saturate(1.45);
+  box-shadow: 0 24px 54px var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px) scale(.98);
+  transition: transform .18s ease, opacity .18s ease, visibility 0s linear .18s;
+}
+
+.menu-toggle:checked ~ .drawer-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+.menu-toggle:checked ~ .drawer {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+}
+
+.drawer-controls {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.menu-control,
+.drawer-close,
+.drawer-nav a,
+.site-menu-fab,
+.desktop-menu-launch {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 40px;
+  border: 1px solid var(--button-border);
+  border-radius: 999px;
+  background: var(--button-bg);
+  color: var(--button-fg);
+  font: inherit;
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.menu-control:focus-visible,
+.drawer-close:focus-visible,
+.drawer-nav a:focus-visible,
+.site-menu-fab:focus-visible,
+.site-desktop-nav a:focus-visible,
+.desktop-menu-launch:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--acadian-yellow) 72%, transparent);
+  outline-offset: 2px;
+}
+
+.theme-button { width: 44px; font-size: 1.15rem; line-height: 1; }
+.lang-button { display: inline-flex; gap: 3px; align-items: center; padding-inline: 12px; }
+.drawer-close {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 44px;
+  font-size: 1.15rem;
+}
+.drawer-nav { display: grid; gap: 8px; margin-top: 18px; }
+.drawer-nav a {
+  width: 100%;
+  grid-template-columns: 24px 1fr 24px;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 17px;
+  text-align: center;
+}
+.drawer-nav a .route-icon { grid-column: 1; }
+.drawer-nav a .route-label { grid-column: 2; }
+
+.menu-control:hover,
+.drawer-close:hover,
+.drawer-nav a:hover,
+.site-menu-fab:hover,
+.desktop-menu-launch:hover {
+  color: var(--button-fg);
+  background: var(--button-bg-hover);
+  border-color: var(--button-border);
+}
+
+/* Mobile shell: one thumb-reachable launcher replaces the former four-route dock.
+   Home now lives inside Menu, while secondary destinations move to Extras. */
+.site-menu-fab {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: 58px;
+  min-width: 58px;
+  height: 58px;
+  min-height: 58px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--glass, color-mix(in srgb, var(--paper) 72%, transparent));
+  box-shadow: 0 14px 38px var(--shadow);
+  backdrop-filter: blur(20px) saturate(1.45);
+  -webkit-backdrop-filter: blur(20px) saturate(1.45);
+  z-index: 82;
+  color: var(--button-fg);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+@media (min-width: 900px) {
+  body { padding-top: 86px; }
+  .site-header,
+  .site-menu-fab { display: none; }
+
+  .site-desktop-nav {
+    position: fixed;
+    inset: 14px 24px auto;
+    z-index: 84;
+    min-height: 58px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 8px 10px 8px 18px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--glass) 90%, transparent);
+    box-shadow: 0 14px 36px var(--shadow);
+    backdrop-filter: blur(20px) saturate(1.35);
+    -webkit-backdrop-filter: blur(20px) saturate(1.35);
+  }
+
+  .desktop-wordmark {
+    color: var(--acadian-yellow);
+    font: 900 .76rem/1 "Pokemon GB", ui-monospace, monospace;
+    letter-spacing: .04em;
+    text-decoration: none;
+  }
+
+  .desktop-route-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .desktop-route {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 8px 13px;
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: .76rem;
+    font-weight: 900;
+    text-decoration: none;
+  }
+  .desktop-route:hover,
+  .desktop-route.is-current {
+    background: var(--button-bg);
+    color: var(--button-fg);
+  }
+  .desktop-route .route-icon { color: var(--gold); }
+  .desktop-route:hover .route-icon,
+  .desktop-route.is-current .route-icon { color: inherit; }
+
+  .desktop-menu-launch {
+    display: inline-flex;
+    gap: 7px;
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: .74rem;
+  }
+
+  .drawer {
+    left: auto;
+    right: max(24px, calc((100vw - 1180px) / 2));
+    top: 82px;
+    bottom: auto;
+    margin: 0;
+    width: 360px;
+    max-height: calc(100svh - 106px);
+    transform: translateY(-6px) scale(.98);
+  }
+  .menu-toggle:checked ~ .drawer { transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .drawer-backdrop,
+  .site-menu-fab,
+  .site-desktop-nav * { transition: none !important; }
+}
