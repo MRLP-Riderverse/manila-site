@@ -747,6 +747,11 @@
         return [label.toLowerCase(), label, content];
       }).filter(([, , value]) => value);
     }
+    function descriptionParts(value) {
+      const text = cleanSummary(value);
+      const parts = text.split(/\s+—\s+/).map(part => part.trim()).filter(Boolean);
+      return { full: text, first: parts[0] || text, rest: parts.slice(1).join(' — ') };
+    }
     function sourceLabel(src) {
       if (!src) return '';
       if (src === 'In person') return 'In person';
@@ -873,7 +878,6 @@
               <div>
                 <a class="recent-link" href="#entry-${escapeHtml(item.slug)}">${escapeHtml(localizedText(item.title_localized) || item.title)}</a>
                 <div class="recent-meta">
-                  ${item.category ? `<span class="meta-pill">${escapeHtml(item.category)}</span>` : ''}
                   ${city ? `<span class="meta-pill">${escapeHtml(city)}</span>` : ''}
                   ${item.draft ? `<span class="meta-pill">${escapeHtml(copy().preview)}</span>` : ''}
                 </div>
@@ -950,7 +954,7 @@
 
     function renderCard(item) {
       const displayTitle = localizedText(item.title_localized) || item.title;
-      const description = localizedText(item.description_localized) || cleanSummary(item.description || item.summary);
+      const description = descriptionParts(localizedText(item.description_localized) || cleanSummary(item.description || item.summary));
       const notes = cleanSummary(item.notes);
       const thumbnailSrc = safeImageSrc(item.thumbnail_src);
       const thumbnailAlt = cleanSummary(item.thumbnail_alt) || `${displayTitle || 'Entry'} photo`;
@@ -981,13 +985,13 @@
                   ${renderUpcomingBadge(item)}
                 </span>
                 <span class="meta-line">
-                  ${item.category ? `<span class="meta-pill">${escapeHtml(item.category)}</span>` : ''}
-                  ${description ? `<span class="summary-description">${escapeHtml(description)}</span>` : ''}
+                  ${description.first ? `<span class="summary-description">${escapeHtml(description.first)}</span>` : ''}
                 </span>
               </span>
             </div>
           </summary>
           <div class="card-body">
+            ${description.rest ? `<p class="description">${escapeHtml(description.rest)}</p>` : ''}
             ${renderNoteBlock(item, notes)}
             ${(detailRows.length || locationContext) ? `<div class="detail-grid">${detailRows.map(([type, label, value]) => `<div class="detail-row"><div class="detail-label">${escapeHtml(label)}</div><div class="detail-value">${renderDetailValue(type, value)}</div></div>`).join('')}${locationContext}</div>` : ''}
             ${eventFeed}
