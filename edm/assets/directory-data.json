@@ -1,8 +1,73 @@
 {
   "schema_version": 1,
   "generated_from": "/home/midnight/ExoCortex/websites/projects/manila-directory/edm",
-  "entry_count": 0,
+  "entry_count": 1,
   "draft_count": 0,
-  "published_count": 0,
-  "items": []
+  "published_count": 1,
+  "items": [
+    {
+      "title": "MidnightRider.sol",
+      "title_localized": {
+        "en": "MidnightRider.sol"
+      },
+      "name": "MidnightRider.sol",
+      "sort_name": "MidnightRider.sol",
+      "brand_name": "",
+      "branch_name": "",
+      "aliases": [
+        "MRLP",
+        "Midnight Rider"
+      ],
+      "slug": "midnightrider-sol",
+      "location_id": "",
+      "region_id": "metro-manila",
+      "street_id": "",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "project",
+      "area": "Canada",
+      "public_area": "Canada",
+      "description": "- Acadian Builder-Creator ⭐️💙🤍❤️ Better Together.",
+      "description_localized": {
+        "en": "- Acadian Builder-Creator ⭐️💙🤍❤️ Better Together."
+      },
+      "notes": "- Acadian Builder-Creator ⭐️💙🤍❤️ Better Together.",
+      "note_points": [
+        "Acadian Builder-Creator ⭐️💙🤍❤️ Better Together."
+      ],
+      "summary": "- Acadian Builder-Creator ⭐️💙🤍❤️ Better Together. - Acadian Builder-Creator ⭐️💙🤍❤️ Better Together.",
+      "tags": [
+        "riderverse",
+        "project LP",
+        "canada"
+      ],
+      "contact": {
+        "phone": "",
+        "email": "",
+        "website": "",
+        "hours": "",
+        "address": ""
+      },
+      "address": "",
+      "hours": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "thumbnail_src": "",
+      "thumbnail_alt": "",
+      "public_data": [
+        "Instagram: @midnightriderlp",
+        "X: @MidnightRiderLP"
+      ],
+      "related_places": [],
+      "sources": [
+        "Self-submitted by the steward"
+      ],
+      "source_type": "public-source",
+      "path": "entries/midnightrider-sol/entry.md",
+      "source_modified_at": "2026-07-20T15:51:04.270178Z",
+      "source_modified_ts": 1784562664
+    }
+  ]
 }

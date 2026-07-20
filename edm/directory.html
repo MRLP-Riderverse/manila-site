@@ -763,6 +763,7 @@
       return [
         item.title, item.name, item.category, item.area, publicCity(item), item.description, item.notes,
         contactValue(item, 'address'), contactValue(item, 'hours'), contactValue(item, 'phone'), contactValue(item, 'email'), contactValue(item, 'website'),
+        ...(Array.isArray(item.public_data) ? item.public_data : []),
         ...(item.tags || []), ...(item.aliases || []), ...(item.related_places || []), ...(item.sources || []),
         ...eventTerms
       ].map(normalize).join(' ');

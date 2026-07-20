@@ -113,7 +113,16 @@
       if (lower === 'address') { const h = mapsHref(text); return h ? `<a class="detail-link" href="${h}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>` : escapeHtml(text); }
       if (lower === 'email') return `<a class="detail-link" href="mailto:${encodeURIComponent(text)}">${escapeHtml(text)}</a>`;
       if (lower === 'website') { const h = /^https?:\/\//i.test(text) ? text : `https://${text}`; return `<a class="detail-link" href="${escapeHtml(h)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`; }
+      if (lower === 'instagram' && /^@?[a-z0-9._]+$/i.test(text)) { const handle = text.replace(/^@/, ''); return `<a class="detail-link" href="https://instagram.com/${encodeURIComponent(handle)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`; }
+      if ((lower === 'x' || lower === 'twitter') && /^@?[a-z0-9_]+$/i.test(text)) { const handle = text.replace(/^@/, ''); return `<a class="detail-link" href="https://x.com/${encodeURIComponent(handle)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`; }
       return escapeHtml(text);
+    }
+    function publicDataRows(item) {
+      return (Array.isArray(item.public_data) ? item.public_data : []).map(value => {
+        const text = cleanSummary(value);
+        const split = text.indexOf(':');
+        return split > 0 ? [text.slice(0, split).trim(), text.slice(split + 1).trim()] : ['Public', text];
+      }).filter(([, value]) => value);
     }
     function dateParts(value) { const d = new Date(value || ''); if (Number.isNaN(d.getTime())) return { month: 'TBD', day: '' }; return { month: new Intl.DateTimeFormat(undefined, { month: 'short' }).format(d), day: new Intl.DateTimeFormat(undefined, { day: 'numeric' }).format(d) }; }
     function applyTheme(theme) { document.documentElement.dataset.theme = theme; localStorage.setItem('acadie-theme', theme); }
@@ -164,6 +173,7 @@
           ['Phone', contactValue(item, 'phone')],
           ['Email', contactValue(item, 'email')],
           ['Website', contactValue(item, 'website')],
+          ...publicDataRows(item),
         ].filter(([, v]) => cleanSummary(v));
 
         // Related events
