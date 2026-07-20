@@ -271,6 +271,12 @@ body { padding-top: 0; }
   .menu-toggle:checked ~ .drawer { transform: translateY(0) scale(1); }
 }
 
+.drawer,
+.drawer *,
+.drawer-nav a {
+  box-sizing: border-box;
+}
+
 @media (max-width: 899px) {
   .drawer {
     width: min(390px, calc(100vw - 32px));
