@@ -361,8 +361,9 @@
       color: var(--gold-ink);
       flex: 0 0 auto;
     }
-    .meta-line { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+    .meta-line { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; align-items: baseline; }
     .meta-pill { border: 1px solid var(--line); background: color-mix(in srgb, var(--paper-soft) 82%, transparent); border-radius: 999px; padding: 3px 6px; color: var(--ink); font-size: 0.67rem; line-height: 1; }
+    .summary-description { color: var(--muted); font-size: 0.76rem; line-height: 1.3; min-width: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
     .card-body { border-top: 1px solid rgba(248,245,234,0.1); padding: 10px 12px 12px; display: grid; gap: 9px; }
     .description { margin: 0; color: var(--ink); line-height: 1.45; font-size: 0.9rem; font-weight: 600; }
     .notes { margin: 0; color: var(--muted); line-height: 1.45; font-size: 0.86rem; }
@@ -727,7 +728,24 @@
         const href = /^https?:\/\//i.test(text) ? text : `https://${text}`;
         return `<a class="detail-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
       }
+      if (type === 'instagram' && /^@?[a-z0-9._]+$/i.test(text)) {
+        const handle = text.replace(/^@/, '');
+        return `<a class="detail-link" href="https://instagram.com/${encodeURIComponent(handle)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
+      }
+      if ((type === 'x' || type === 'twitter') && /^@?[a-z0-9_]+$/i.test(text)) {
+        const handle = text.replace(/^@/, '');
+        return `<a class="detail-link" href="https://x.com/${encodeURIComponent(handle)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
+      }
       return escapeHtml(text);
+    }
+    function publicDataRows(item) {
+      return (Array.isArray(item.public_data) ? item.public_data : []).map(value => {
+        const text = cleanSummary(value);
+        const split = text.indexOf(':');
+        const label = split > 0 ? text.slice(0, split).trim() : 'Public';
+        const content = split > 0 ? text.slice(split + 1).trim() : text;
+        return [label.toLowerCase(), label, content];
+      }).filter(([, , value]) => value);
     }
     function sourceLabel(src) {
       if (!src) return '';
@@ -934,7 +952,6 @@
       const displayTitle = localizedText(item.title_localized) || item.title;
       const description = localizedText(item.description_localized) || cleanSummary(item.description || item.summary);
       const notes = cleanSummary(item.notes);
-      const tags = derivedTags(item);
       const thumbnailSrc = safeImageSrc(item.thumbnail_src);
       const thumbnailAlt = cleanSummary(item.thumbnail_alt) || `${displayTitle || 'Entry'} photo`;
       const thumbFallback = escapeHtml((displayTitle || '?').trim().charAt(0).toUpperCase());
@@ -949,6 +966,7 @@
         ['phone', copy().phone, contactValue(item, 'phone')],
         ['email', copy().email, contactValue(item, 'email')],
         ...(item.draft ? [['website', copy().website, contactValue(item, 'website')]] : []),
+        ...publicDataRows(item),
       ].filter(([, , value]) => cleanSummary(value));
       const entryLink = !item.draft ? `<a class="full-page-link" href="entry.html#${escapeHtml(item.slug)}" target="_top" rel="noopener noreferrer">${escapeHtml(copy().viewFullPage)} ↗</a>` : '';
       return `
@@ -964,13 +982,12 @@
                 </span>
                 <span class="meta-line">
                   ${item.category ? `<span class="meta-pill">${escapeHtml(item.category)}</span>` : ''}
-                  ${tags.slice(0, 1).map(tag => `<span class="meta-pill">#${escapeHtml(tag)}</span>`).join('')}
+                  ${description ? `<span class="summary-description">${escapeHtml(description)}</span>` : ''}
                 </span>
               </span>
             </div>
           </summary>
           <div class="card-body">
-            ${description ? `<p class="description">${escapeHtml(description)}</p>` : `<p class="description">${escapeHtml(copy().descriptionComingSoon)}</p>`}
             ${renderNoteBlock(item, notes)}
             ${(detailRows.length || locationContext) ? `<div class="detail-grid">${detailRows.map(([type, label, value]) => `<div class="detail-row"><div class="detail-label">${escapeHtml(label)}</div><div class="detail-value">${renderDetailValue(type, value)}</div></div>`).join('')}${locationContext}</div>` : ''}
             ${eventFeed}
