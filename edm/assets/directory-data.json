@@ -2,9 +2,156 @@
   "schema_version": 1,
   "generated_from": "/home/midnight/ExoCortex/websites/projects/manila-directory/edm",
   "entry_count": 4,
-  "draft_count": 3,
-  "published_count": 1,
+  "draft_count": 0,
+  "published_count": 4,
   "items": [
+    {
+      "title": "Apotheka",
+      "title_localized": {
+        "en": "Apotheka"
+      },
+      "name": "Apotheka",
+      "sort_name": "Apotheka",
+      "brand_name": "",
+      "branch_name": "",
+      "aliases": [],
+      "slug": "apotheka",
+      "location_id": "",
+      "region_id": "metro-manila",
+      "street_id": "",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "venue",
+      "area": "Poblacion / Makati, Manila",
+      "public_area": "Poblacion / Makati, Manila",
+      "description": "A Poblacion underground institution with baile-funk, global club, house, Detroit techno, jungle, and '90s electro across two floors.",
+      "description_localized": {
+        "en": "A Poblacion underground institution with baile-funk, global club, house, Detroit techno, jungle, and '90s electro across two floors."
+      },
+      "notes": "Tucked behind its iconic red door in the heart of Poblacion, Apotheka remains one of Manila's consistent underground institutions. The main floor leans into baile-funk, global club, and house; the mezzanine delivers sharper Detroit techno, jungle, and '90s electro.",
+      "note_points": [],
+      "summary": "A Poblacion underground institution with baile-funk, global club, house, Detroit techno, jungle, and '90s electro across two floors. Tucked behind its iconic red door in the heart of Poblacion, Apotheka remains one of Ma",
+      "tags": [
+        "underground",
+        "indoor",
+        "recurring-night",
+        "collective-driven",
+        "queer-friendly",
+        "baile-funk",
+        "global-club",
+        "house",
+        "techno",
+        "jungle",
+        "breaks",
+        "afro-house"
+      ],
+      "contact": {
+        "phone": "+63 936 981 5462",
+        "email": "marco@quayconcepts.ph",
+        "website": "https://apothekamanila.com/",
+        "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
+        "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM"
+      },
+      "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
+      "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM",
+      "phone": "+63 936 981 5462",
+      "email": "marco@quayconcepts.ph",
+      "website": "https://apothekamanila.com/",
+      "thumbnail_src": "",
+      "thumbnail_alt": "",
+      "public_data": [
+        "Address: G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
+        "Hours: Wednesday – Saturday 9:00 PM – 4:00 AM",
+        "Phone: +63 936 981 5462",
+        "Email: marco@quayconcepts.ph",
+        "Website: https://apothekamanila.com/",
+        "Instagram: @apothekamanila",
+        "Resident Advisor",
+        "Facebook"
+      ],
+      "related_places": [
+        "kinki",
+        "unknwn"
+      ],
+      "sources": [
+        "https://apothekamanila.com/"
+      ],
+      "source_type": "public-source",
+      "path": "entries/apotheka/entry.md",
+      "source_modified_at": "2026-07-21T13:19:43.848491Z",
+      "source_modified_ts": 1784639983
+    },
+    {
+      "title": "KINKI",
+      "title_localized": {
+        "en": "KINKI"
+      },
+      "name": "KINKI",
+      "sort_name": "KINKI",
+      "brand_name": "",
+      "branch_name": "",
+      "aliases": [],
+      "slug": "kinki",
+      "location_id": "",
+      "region_id": "metro-manila",
+      "street_id": "",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "venue",
+      "area": "Poblacion / Makati, Manila",
+      "public_area": "Poblacion / Makati, Manila",
+      "description": "A Poblacion-Makati venue and event series delivering raw, community-led programming across house, techno, breaks, and experimental nights.",
+      "description_localized": {
+        "en": "A Poblacion-Makati venue and event series delivering raw, community-led programming across house, techno, breaks, and experimental nights."
+      },
+      "notes": "KINKI operates as both a venue and an event series (kinki.love), delivering raw, community-led programming across multiple nights. Signature series include ELEPHANT THURSDAYS, KINKI LOVE, and PROVIDER. The space favors risk-taking and unpolished underground energy over commercial polish.",
+      "note_points": [],
+      "summary": "A Poblacion-Makati venue and event series delivering raw, community-led programming across house, techno, breaks, and experimental nights. KINKI operates as both a venue and an event series (kinki.love), delivering raw, ",
+      "tags": [
+        "underground",
+        "indoor",
+        "recurring-night",
+        "collective-driven",
+        "house",
+        "techno",
+        "breaks",
+        "experimental",
+        "queer"
+      ],
+      "contact": {
+        "phone": "",
+        "email": "",
+        "website": "https://linktr.ee/kinki.love",
+        "address": "Clustered around Poblacion / Makati",
+        "hours": "Multiple nights weekly; Thursday – Saturday"
+      },
+      "address": "Clustered around Poblacion / Makati",
+      "hours": "Multiple nights weekly; Thursday – Saturday",
+      "phone": "",
+      "email": "",
+      "website": "https://linktr.ee/kinki.love",
+      "thumbnail_src": "",
+      "thumbnail_alt": "",
+      "public_data": [
+        "Address: Clustered around Poblacion / Makati",
+        "Hours: Multiple nights weekly; Thursday – Saturday",
+        "Website: https://linktr.ee/kinki.love",
+        "Instagram: @kinki.love__"
+      ],
+      "related_places": [
+        "apotheka",
+        "unknwn"
+      ],
+      "sources": [
+        "https://linktr.ee/kinki.love"
+      ],
+      "source_type": "public-source",
+      "path": "entries/kinki/entry.md",
+      "source_modified_at": "2026-07-21T13:19:43.985491Z",
+      "source_modified_ts": 1784639983
+    },
     {
       "title": "MidnightRider.sol",
       "title_localized": {
@@ -43,11 +190,11 @@
         "canada"
       ],
       "contact": {
+        "phone": "",
         "email": "",
-        "hours": "",
-        "address": "",
         "website": "",
-        "phone": ""
+        "address": "",
+        "hours": ""
       },
       "address": "",
       "hours": "",
@@ -70,148 +217,6 @@
       "source_modified_ts": 1784562664
     },
     {
-      "title": "Apotheka",
-      "title_localized": {
-        "en": "Apotheka"
-      },
-      "name": "Apotheka",
-      "sort_name": "Apotheka",
-      "brand_name": "",
-      "branch_name": "",
-      "aliases": [],
-      "slug": "apotheka",
-      "location_id": "",
-      "region_id": "metro-manila",
-      "street_id": "",
-      "status": "draft",
-      "draft": true,
-      "badge": "DRAFT",
-      "category": "venue",
-      "area": "Poblacion / Makati, Manila",
-      "public_area": "Poblacion / Makati, Manila",
-      "description": "Tucked behind its iconic red door in the heart of Poblacion, Apotheka remains one of Manila's most consistent underground institutions. The main floor leans into baile-funk, global club, and house; the mezzanine delivers sharper Detroit techno, jungle, and '90s electro.",
-      "description_localized": {
-        "en": "Tucked behind its iconic red door in the heart of Poblacion, Apotheka remains one of Manila's most consistent underground institutions. The main floor leans into baile-funk, global club, and house; the mezzanine delivers sharper Detroit techno, jungle, and '90s electro."
-      },
-      "notes": "Related places / collectives: KINKI - UNKNWN - ?",
-      "note_points": [],
-      "summary": "Tucked behind its iconic red door in the heart of Poblacion, Apotheka remains one of Manila's most consistent underground institutions. The main floor leans into baile-funk, global club, and house; the mezzanine delivers",
-      "tags": [
-        "underground",
-        "indoor",
-        "recurring-night",
-        "collective-driven",
-        "queer-friendly",
-        "baile-funk",
-        "global-club",
-        "house",
-        "techno",
-        "jungle",
-        "breaks",
-        "afro-house"
-      ],
-      "contact": {
-        "email": "marco@quayconcepts.ph",
-        "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM",
-        "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
-        "website": "https://apothekamanila.com/",
-        "phone": "+63 936 981 5462"
-      },
-      "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
-      "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM",
-      "phone": "+63 936 981 5462",
-      "email": "marco@quayconcepts.ph",
-      "website": "https://apothekamanila.com/",
-      "thumbnail_src": "",
-      "thumbnail_alt": "",
-      "public_data": [
-        "Address: G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
-        "Hours: Wednesday – Saturday 9:00 PM – 4:00 AM",
-        "Phone: +63 936 981 5462",
-        "Email: marco@quayconcepts.ph",
-        "Website: https://apothekamanila.com/",
-        "Socials: Instagram @apothekamanila · Resident Advisor · Facebook"
-      ],
-      "related_places": [
-        "KINKI",
-        "UNKNWN"
-      ],
-      "sources": [
-        "https://apothekamanila.com/"
-      ],
-      "source_type": "inbox",
-      "path": "inbox/apotheka.md",
-      "source_modified_at": "2026-07-21T12:29:07.518729Z",
-      "source_modified_ts": 1784636947
-    },
-    {
-      "title": "KINKI",
-      "title_localized": {
-        "en": "KINKI"
-      },
-      "name": "KINKI",
-      "sort_name": "KINKI",
-      "brand_name": "",
-      "branch_name": "",
-      "aliases": [],
-      "slug": "kinki",
-      "location_id": "",
-      "region_id": "metro-manila",
-      "street_id": "",
-      "status": "draft",
-      "draft": true,
-      "badge": "DRAFT",
-      "category": "venue / collective",
-      "area": "Poblacion-Makati, Manila",
-      "public_area": "Poblacion-Makati, Manila",
-      "description": "KINKI operates as both a venue and an event series (kinki.love), delivering raw, community-led programming across multiple nights. Signature series include ELEPHANT THURSDAYS, KINKI LOVE, and PROVIDER. The space favors risk-taking and unpolished underground energy over commercial polish.",
-      "description_localized": {
-        "en": "KINKI operates as both a venue and an event series (kinki.love), delivering raw, community-led programming across multiple nights. Signature series include ELEPHANT THURSDAYS, KINKI LOVE, and PROVIDER. The space favors risk-taking and unpolished underground energy over commercial polish."
-      },
-      "notes": "Recent / upcoming events: ELEPHANT THURSDAYS - KINKI LOVE #2; PROVIDER Series.",
-      "note_points": [],
-      "summary": "KINKI operates as both a venue and an event series (kinki.love), delivering raw, community-led programming across multiple nights. Signature series include ELEPHANT THURSDAYS, KINKI LOVE, and PROVIDER. The space favors r",
-      "tags": [
-        "underground",
-        "indoor",
-        "recurring-night",
-        "collective-driven",
-        "house",
-        "techno",
-        "breaks",
-        "experimental",
-        "queer"
-      ],
-      "contact": {
-        "email": "",
-        "hours": "Multiple nights weekly; Thursday – Saturday",
-        "address": "Clustered around Poblacion / Makati",
-        "website": "https://linktr.ee/kinki.love",
-        "phone": ""
-      },
-      "address": "Clustered around Poblacion / Makati",
-      "hours": "Multiple nights weekly; Thursday – Saturday",
-      "phone": "",
-      "email": "",
-      "website": "https://linktr.ee/kinki.love",
-      "thumbnail_src": "",
-      "thumbnail_alt": "",
-      "public_data": [
-        "Address: Clustered around Poblacion / Makati",
-        "Hours: Multiple nights weekly; Thursday – Saturday",
-        "Website: https://linktr.ee/kinki.love",
-        "Socials: Instagram @kinki.love__"
-      ],
-      "related_places": [],
-      "sources": [
-        "https://linktr.ee/kinki.love"
-      ],
-      "source_type": "inbox",
-      "path": "inbox/kinki.md",
-      "source_modified_at": "2026-07-21T12:29:07.515697Z",
-      "source_modified_ts": 1784636947
-    },
-    {
       "title": "UNKNWN",
       "title_localized": {
         "en": "UNKNWN"
@@ -225,19 +230,19 @@
       "location_id": "",
       "region_id": "metro-manila",
       "street_id": "",
-      "status": "draft",
-      "draft": true,
-      "badge": "DRAFT",
-      "category": "collective",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "organization",
       "area": "Roving / Multi-Neighborhood, Manila",
       "public_area": "Roving / Multi-Neighborhood, Manila",
-      "description": "UNKNWN transforms Manila's buttoned-up nightlife by relocating parties into unlikely spaces: organic markets, unfinished buildings, warehouses, and heritage sites. The collective prioritizes curated lineups that blend local talent with regional voices, featuring residents Emel Rowe, Samantha Nicole, JAV, Tomas, and Randy Salvador.",
+      "description": "A Manila collective that relocates underground parties into organic markets, warehouses, unfinished buildings, and heritage sites.",
       "description_localized": {
-        "en": "UNKNWN transforms Manila's buttoned-up nightlife by relocating parties into unlikely spaces: organic markets, unfinished buildings, warehouses, and heritage sites. The collective prioritizes curated lineups that blend local talent with regional voices, featuring residents Emel Rowe, Samantha Nicole, JAV, Tomas, and Randy Salvador."
+        "en": "A Manila collective that relocates underground parties into organic markets, warehouses, unfinished buildings, and heritage sites."
       },
-      "notes": "Recent / upcoming events: ICS × UNKNWN: INTERSECTION; UNKNWN.club; Salon de Ning.",
+      "notes": "UNKNWN transforms Manila's buttoned-up nightlife by relocating parties into unlikely spaces: organic markets, unfinished buildings, warehouses, and heritage sites. The collective prioritizes curated lineups that blend local talent with regional voices, featuring residents Emel Rowe, Samantha Nicole, JAV, Tomas, and Randy Salvador.",
       "note_points": [],
-      "summary": "UNKNWN transforms Manila's buttoned-up nightlife by relocating parties into unlikely spaces: organic markets, unfinished buildings, warehouses, and heritage sites. The collective prioritizes curated lineups that blend lo",
+      "summary": "A Manila collective that relocates underground parties into organic markets, warehouses, unfinished buildings, and heritage sites. UNKNWN transforms Manila's buttoned-up nightlife by relocating parties into unlikely spac",
       "tags": [
         "underground",
         "one-off",
@@ -253,11 +258,11 @@
         "budots-adjacent"
       ],
       "contact": {
+        "phone": "",
         "email": "info@unknwn.asia",
-        "hours": "Site-specific (Outdoor / Festival / One-Off)",
-        "address": "2288 Don Chino Roces Avenue Extension, Makati 1231",
         "website": "https://unknwn.asia/",
-        "phone": ""
+        "address": "2288 Don Chino Roces Avenue Extension, Makati 1231",
+        "hours": "Site-specific (Outdoor / Festival / One-Off)"
       },
       "address": "2288 Don Chino Roces Avenue Extension, Makati 1231",
       "hours": "Site-specific (Outdoor / Festival / One-Off)",
@@ -271,16 +276,20 @@
         "Hours: Site-specific (Outdoor / Festival / One-Off)",
         "Email: info@unknwn.asia",
         "Website: https://unknwn.asia/",
-        "Socials: Instagram · Facebook"
+        "Instagram",
+        "Facebook"
       ],
-      "related_places": [],
+      "related_places": [
+        "apotheka",
+        "kinki"
+      ],
       "sources": [
         "https://unknwn.asia/"
       ],
-      "source_type": "inbox",
-      "path": "inbox/unknwn.md",
-      "source_modified_at": "2026-07-21T12:29:07.532965Z",
-      "source_modified_ts": 1784636947
+      "source_type": "public-source",
+      "path": "entries/unknwn/entry.md",
+      "source_modified_at": "2026-07-21T13:19:21.909464Z",
+      "source_modified_ts": 1784639961
     }
   ]
 }
