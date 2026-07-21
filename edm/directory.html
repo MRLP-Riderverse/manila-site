@@ -747,6 +747,15 @@
         return [label.toLowerCase(), label, content];
       }).filter(([, , value]) => value);
     }
+    function uniqueDetailRows(rows) {
+      const seen = new Set();
+      return rows.filter(([type, label, value]) => {
+        const key = `${normalizeComparable(label)}|${normalizeComparable(value)}`;
+        if (!value || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
     function descriptionParts(value) {
       const text = cleanSummary(value);
       const parts = text.split(/\s+—\s+/).map(part => part.trim()).filter(Boolean);
@@ -971,14 +980,14 @@
         : `<span class="summary-thumb"><span class="thumb-fallback">${thumbFallback}</span></span>`;
       const locationContext = renderLocationContext(item);
       const eventFeed = renderEventFeed(item);
-      const detailRows = [
+      const detailRows = uniqueDetailRows([
         ['address', copy().address, contactValue(item, 'address')],
         ['hours', copy().hours, contactValue(item, 'hours')],
         ['phone', copy().phone, contactValue(item, 'phone')],
         ['email', copy().email, contactValue(item, 'email')],
         ...(item.draft ? [['website', copy().website, contactValue(item, 'website')]] : []),
         ...publicDataRows(item),
-      ].filter(([, , value]) => cleanSummary(value));
+      ].map(([type, label, value]) => [type, label, cleanSummary(value)]));
       const entryLink = !item.draft ? `<a class="full-page-link" href="entry.html#${escapeHtml(item.slug)}" target="_top" rel="noopener noreferrer">${escapeHtml(copy().viewFullPage)} ↗</a>` : '';
       return `
         <details class="directory-card" id="entry-${escapeHtml(item.slug)}">

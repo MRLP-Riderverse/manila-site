@@ -124,6 +124,18 @@
         return split > 0 ? [text.slice(0, split).trim(), text.slice(split + 1).trim()] : ['Public', text];
       }).filter(([, value]) => value);
     }
+    function normalizeComparable(value) {
+      return cleanSummary(value).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    }
+    function uniqueDetailRows(rows) {
+      const seen = new Set();
+      return rows.filter(([label, value]) => {
+        const key = `${normalizeComparable(label)}|${normalizeComparable(value)}`;
+        if (!value || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
     function descriptionParts(value) {
       const text = cleanSummary(value);
       const parts = text.split(/\s+—\s+/).map(part => part.trim()).filter(Boolean);
@@ -171,14 +183,14 @@
         document.title = `${itemTitle} — Manila EDM`;
         const city = publicCity(item);
         const description = descriptionParts(item.description_localized || item.description || item.summary);
-        const detailRows = [
+        const detailRows = uniqueDetailRows([
           ['Address', contactValue(item, 'address')],
           ['Hours', contactValue(item, 'hours')],
           ['Phone', contactValue(item, 'phone')],
           ['Email', contactValue(item, 'email')],
           ['Website', contactValue(item, 'website')],
           ...publicDataRows(item),
-        ].filter(([, v]) => cleanSummary(v));
+        ].map(([label, value]) => [label, cleanSummary(value)]));
 
         // Related events
         const relatedEvents = events.filter(e => {

@@ -28,6 +28,13 @@
 
 body { padding-top: 0; }
 .menu-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.site-header,
+.drawer,
+.drawer *,
+.site-menu-fab,
+.desktop-menu-launch {
+  font-family: "Trebuchet MS", "Verdana", "Segoe UI", sans-serif;
+}
 .shell-visually-hidden {
   position: absolute;
   width: 1px;
