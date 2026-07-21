@@ -47,11 +47,11 @@
         "afro-house"
       ],
       "contact": {
-        "phone": "+63 936 981 5462",
-        "email": "marco@quayconcepts.ph",
         "website": "https://apothekamanila.com/",
-        "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
-        "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM"
+        "phone": "+63 936 981 5462",
+        "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM",
+        "email": "marco@quayconcepts.ph",
+        "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210"
       },
       "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
       "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM",
@@ -121,11 +121,11 @@
         "queer"
       ],
       "contact": {
-        "phone": "",
-        "email": "",
         "website": "https://linktr.ee/kinki.love",
-        "address": "Clustered around Poblacion / Makati",
-        "hours": "Multiple nights weekly; Thursday – Saturday"
+        "phone": "",
+        "hours": "Multiple nights weekly; Thursday – Saturday",
+        "email": "",
+        "address": "Clustered around Poblacion / Makati"
       },
       "address": "Clustered around Poblacion / Makati",
       "hours": "Multiple nights weekly; Thursday – Saturday",
@@ -190,11 +190,11 @@
         "canada"
       ],
       "contact": {
-        "phone": "",
-        "email": "",
         "website": "",
-        "address": "",
-        "hours": ""
+        "phone": "",
+        "hours": "",
+        "email": "",
+        "address": ""
       },
       "address": "",
       "hours": "",
@@ -258,11 +258,11 @@
         "budots-adjacent"
       ],
       "contact": {
-        "phone": "",
-        "email": "info@unknwn.asia",
         "website": "https://unknwn.asia/",
-        "address": "2288 Don Chino Roces Avenue Extension, Makati 1231",
-        "hours": "Site-specific (Outdoor / Festival / One-Off)"
+        "phone": "",
+        "hours": "Site-specific (Outdoor / Festival / One-Off)",
+        "email": "info@unknwn.asia",
+        "address": "2288 Don Chino Roces Avenue Extension, Makati 1231"
       },
       "address": "2288 Don Chino Roces Avenue Extension, Makati 1231",
       "hours": "Site-specific (Outdoor / Festival / One-Off)",
