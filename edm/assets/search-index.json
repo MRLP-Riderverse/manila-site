@@ -1,3 +1,278 @@
 {
-  "items": []
+  "schema_version": 1,
+  "item_count": 11,
+  "items": [
+    {
+      "type": "entry",
+      "id": "apotheka",
+      "title": "Apotheka",
+      "subtitle": "venue · Poblacion / Makati, Manila",
+      "badges": [
+        "venue"
+      ],
+      "url": "directory.html#entry-apotheka",
+      "terms": [
+        "Apotheka",
+        "venue",
+        "Poblacion / Makati, Manila",
+        "A Poblacion underground institution with baile-funk, global club, house, Detroit techno, jungle, and '90s electro across two floors.",
+        "underground",
+        "indoor",
+        "recurring-night",
+        "collective-driven",
+        "queer-friendly",
+        "baile-funk",
+        "global-club",
+        "house",
+        "techno",
+        "jungle",
+        "breaks",
+        "afro-house"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "duality",
+      "title": "Duality",
+      "subtitle": "artist · Metro Manila",
+      "badges": [
+        "artist"
+      ],
+      "url": "directory.html#entry-duality",
+      "terms": [
+        "Duality",
+        "artist",
+        "Metro Manila",
+        "Manila selector bringing deep techno, percussion, bass, ambient, and analogue texture into refined, complex sets.",
+        "underground",
+        "deep-techno",
+        "minimal",
+        "percussive",
+        "bass",
+        "ambient",
+        "analog",
+        "Sean Bautista"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "fetlavr",
+      "title": "Fetlavr",
+      "subtitle": "artist · Poblacion / Manila",
+      "badges": [
+        "artist"
+      ],
+      "url": "directory.html#entry-fetlavr",
+      "terms": [
+        "Fetlavr",
+        "artist",
+        "Poblacion / Manila",
+        "Locally rooted Manila selector working across techno, house, and experimental music.",
+        "underground",
+        "local",
+        "Poblacion",
+        "MCR",
+        "techno",
+        "house",
+        "experimental"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "horseboyy",
+      "title": "Horseboyy",
+      "subtitle": "artist · Metro Manila",
+      "badges": [
+        "artist"
+      ],
+      "url": "directory.html#entry-horseboyy",
+      "terms": [
+        "Horseboyy",
+        "artist",
+        "Metro Manila",
+        "Manila selector blending house, breaks, techno, and booty / club within the city’s post-pandemic underground wave.",
+        "underground",
+        "local",
+        "MCR",
+        "house",
+        "breaks",
+        "techno",
+        "booty-club",
+        "HORSIN AROUND"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "jesse-g",
+      "title": "Jesse G",
+      "subtitle": "artist · Germany / Manila",
+      "badges": [
+        "artist"
+      ],
+      "url": "directory.html#entry-jesse-g",
+      "terms": [
+        "Jesse G",
+        "artist",
+        "Germany / Manila",
+        "European-based techno selector with Manila roots, known for hypnotic, groovy, vinyl-conscious sets.",
+        "underground",
+        "EuropeanTechno",
+        "Berghain",
+        "groovy",
+        "techno",
+        "vinyl",
+        "hypnotic"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "joshua-den-ouden",
+      "title": "Joshua Den Ouden",
+      "subtitle": "project · The Philippines / Southeast Asia",
+      "badges": [
+        "project"
+      ],
+      "url": "directory.html#entry-joshua-den-ouden",
+      "terms": [
+        "Joshua Den Ouden",
+        "project",
+        "The Philippines / Southeast Asia",
+        "JoshShoot.sol helps build Southeast Asia's creative culture through film, photography, web3, events, and live experiences.",
+        "creator",
+        "cultural-infrastructure",
+        "film",
+        "photography",
+        "web3",
+        "events",
+        "creative-culture",
+        "southeast-asia",
+        "community-building",
+        "JoshShoot.sol",
+        "JoshShoot"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "kinki",
+      "title": "KINKI",
+      "subtitle": "venue · Poblacion / Makati, Manila",
+      "badges": [
+        "venue"
+      ],
+      "url": "directory.html#entry-kinki",
+      "terms": [
+        "KINKI",
+        "venue",
+        "Poblacion / Makati, Manila",
+        "A Poblacion-Makati venue and event series delivering raw, community-led programming across house, techno, breaks, and experimental nights.",
+        "underground",
+        "indoor",
+        "recurring-night",
+        "collective-driven",
+        "house",
+        "techno",
+        "breaks",
+        "experimental",
+        "queer"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "luna",
+      "title": "Luna",
+      "subtitle": "artist · Metro Manila",
+      "badges": [
+        "artist"
+      ],
+      "url": "directory.html#entry-luna",
+      "terms": [
+        "Luna",
+        "artist",
+        "Metro Manila",
+        "Manila selector exploring dreamy house, breaks, ambient, and club music through a femme-led local perspective.",
+        "underground",
+        "local",
+        "MCR",
+        "house",
+        "breaks",
+        "ambient",
+        "club",
+        "femme",
+        "heyitslunastardust"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "midnightrider-sol",
+      "title": "MidnightRider.sol",
+      "subtitle": "project · Canada",
+      "badges": [
+        "project"
+      ],
+      "url": "directory.html#entry-midnightrider-sol",
+      "terms": [
+        "MidnightRider.sol",
+        "project",
+        "Canada",
+        "Acadian Builder-Creator ⭐️💙🤍❤️ — Better Together.",
+        "riderverse",
+        "project LP",
+        "canada",
+        "MRLP",
+        "Midnight Rider"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "sonchauni",
+      "title": "Sonchauni",
+      "subtitle": "artist · Dubai / Manila",
+      "badges": [
+        "artist"
+      ],
+      "url": "directory.html#entry-sonchauni",
+      "terms": [
+        "Sonchauni",
+        "artist",
+        "Dubai / Manila",
+        "Dubai- and Manila-connected selector balancing ambient euphoria and percussive tension through a diasporic practice.",
+        "underground",
+        "MENA",
+        "Dubai",
+        "Manila",
+        "ambient",
+        "percussive",
+        "experimental",
+        "diasporic"
+      ]
+    },
+    {
+      "type": "entry",
+      "id": "unknwn",
+      "title": "UNKNWN",
+      "subtitle": "organization · Roving / Multi-Neighborhood, Manila",
+      "badges": [
+        "organization"
+      ],
+      "url": "directory.html#entry-unknwn",
+      "terms": [
+        "UNKNWN",
+        "organization",
+        "Roving / Multi-Neighborhood, Manila",
+        "A Manila collective that relocates underground parties into organic markets, warehouses, unfinished buildings, and heritage sites.",
+        "underground",
+        "one-off",
+        "outdoor",
+        "festival",
+        "recurring",
+        "decolonizing",
+        "house",
+        "techno",
+        "open-format",
+        "jungle",
+        "breaks",
+        "budots-adjacent"
+      ]
+    }
+  ]
 }

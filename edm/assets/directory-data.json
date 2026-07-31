@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "generated_from": "/home/midnight/ExoCortex/websites/projects/manila-directory/edm",
-  "entry_count": 5,
+  "entry_count": 11,
   "draft_count": 0,
-  "published_count": 5,
+  "published_count": 11,
   "items": [
     {
       "title": "Apotheka",
@@ -47,11 +47,11 @@
         "afro-house"
       ],
       "contact": {
-        "email": "marco@quayconcepts.ph",
         "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
+        "website": "https://apothekamanila.com/",
         "phone": "+63 936 981 5462",
-        "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM",
-        "website": "https://apothekamanila.com/"
+        "email": "marco@quayconcepts.ph",
+        "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM"
       },
       "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
       "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM",
@@ -81,6 +81,278 @@
       "path": "entries/apotheka/entry.md",
       "source_modified_at": "2026-07-21T13:19:43.848491Z",
       "source_modified_ts": 1784639983
+    },
+    {
+      "title": "Duality",
+      "title_localized": {
+        "en": "Duality"
+      },
+      "name": "Duality",
+      "sort_name": "Duality",
+      "brand_name": "",
+      "branch_name": "",
+      "aliases": [
+        "Sean Bautista"
+      ],
+      "slug": "duality",
+      "location_id": "",
+      "region_id": "metro-manila",
+      "street_id": "",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "artist",
+      "area": "Metro Manila",
+      "public_area": "Metro Manila",
+      "description": "Manila selector bringing deep techno, percussion, bass, ambient, and analogue texture into refined, complex sets.",
+      "description_localized": {
+        "en": "Manila selector bringing deep techno, percussion, bass, ambient, and analogue texture into refined, complex sets."
+      },
+      "notes": "Duality, aka Sean Bautista, moves through deep techno, percussion, bass, ambient, and analogue texture. His sets hold old against new and analogue against digital, producing a refined but complex sound with bass-forward force.",
+      "note_points": [],
+      "summary": "Manila selector bringing deep techno, percussion, bass, ambient, and analogue texture into refined, complex sets. Duality, aka Sean Bautista, moves through deep techno, percussion, bass, ambient, and analogue texture. Hi",
+      "tags": [
+        "underground",
+        "deep-techno",
+        "minimal",
+        "percussive",
+        "bass",
+        "ambient",
+        "analog"
+      ],
+      "contact": {
+        "address": "",
+        "website": "https://soundcloud.com/duality_dj",
+        "phone": "",
+        "email": "",
+        "hours": ""
+      },
+      "address": "",
+      "hours": "",
+      "phone": "",
+      "email": "",
+      "website": "https://soundcloud.com/duality_dj",
+      "thumbnail_src": "",
+      "thumbnail_alt": "",
+      "public_data": [
+        "Website: https://soundcloud.com/duality_dj",
+        "SoundCloud: https://soundcloud.com/duality_dj",
+        "Instagram: https://www.instagram.com/duality__dj/"
+      ],
+      "related_places": [],
+      "sources": [
+        "https://soundcloud.com/duality_dj",
+        "Direct steward submission via JoshShoot.sol"
+      ],
+      "source_type": "public-source",
+      "path": "entries/duality/entry.md",
+      "source_modified_at": "2026-07-31T21:49:20.708856Z",
+      "source_modified_ts": 1785534560
+    },
+    {
+      "title": "Fetlavr",
+      "title_localized": {
+        "en": "Fetlavr"
+      },
+      "name": "Fetlavr",
+      "sort_name": "Fetlavr",
+      "brand_name": "",
+      "branch_name": "",
+      "aliases": [],
+      "slug": "fetlavr",
+      "location_id": "",
+      "region_id": "metro-manila",
+      "street_id": "",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "artist",
+      "area": "Poblacion / Manila",
+      "public_area": "Poblacion / Manila",
+      "description": "Locally rooted Manila selector working across techno, house, and experimental music.",
+      "description_localized": {
+        "en": "Locally rooted Manila selector working across techno, house, and experimental music."
+      },
+      "notes": "Fetlavr is a locally rooted Manila selector moving through techno, house, and experimental music. Documented in the Manila Community Radio archive, the project signals a steady, community-led presence in the city’s underground.",
+      "note_points": [],
+      "summary": "Locally rooted Manila selector working across techno, house, and experimental music. Fetlavr is a locally rooted Manila selector moving through techno, house, and experimental music. Documented in the Manila Community Ra",
+      "tags": [
+        "underground",
+        "local",
+        "Poblacion",
+        "MCR",
+        "techno",
+        "house",
+        "experimental"
+      ],
+      "contact": {
+        "address": "",
+        "website": "https://soundcloud.com/fetlavr",
+        "phone": "",
+        "email": "",
+        "hours": ""
+      },
+      "address": "",
+      "hours": "",
+      "phone": "",
+      "email": "",
+      "website": "https://soundcloud.com/fetlavr",
+      "thumbnail_src": "",
+      "thumbnail_alt": "",
+      "public_data": [
+        "Website: https://soundcloud.com/fetlavr",
+        "SoundCloud: https://soundcloud.com/fetlavr",
+        "Instagram: https://www.instagram.com/fetlavr/"
+      ],
+      "related_places": [
+        "kinki",
+        "apotheka"
+      ],
+      "sources": [
+        "Manila Community Radio",
+        "Direct steward submission via JoshShoot.sol"
+      ],
+      "source_type": "public-source",
+      "path": "entries/fetlavr/entry.md",
+      "source_modified_at": "2026-07-31T21:49:20.923130Z",
+      "source_modified_ts": 1785534560
+    },
+    {
+      "title": "Horseboyy",
+      "title_localized": {
+        "en": "Horseboyy"
+      },
+      "name": "Horseboyy",
+      "sort_name": "Horseboyy",
+      "brand_name": "",
+      "branch_name": "",
+      "aliases": [
+        "HORSIN AROUND"
+      ],
+      "slug": "horseboyy",
+      "location_id": "",
+      "region_id": "metro-manila",
+      "street_id": "",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "artist",
+      "area": "Metro Manila",
+      "public_area": "Metro Manila",
+      "description": "Manila selector blending house, breaks, techno, and booty / club within the city’s post-pandemic underground wave.",
+      "description_localized": {
+        "en": "Manila selector blending house, breaks, techno, and booty / club within the city’s post-pandemic underground wave."
+      },
+      "notes": "Horseboyy, also operating as HORSIN AROUND, is a Manila-based selector working across house, breaks, techno, and booty / club. Documented through Manila Community Radio, he belongs to the post-pandemic wave of local DJs rebuilding the city’s intimate underground circuit.",
+      "note_points": [],
+      "summary": "Manila selector blending house, breaks, techno, and booty / club within the city’s post-pandemic underground wave. Horseboyy, also operating as HORSIN AROUND, is a Manila-based selector working across house, breaks, tech",
+      "tags": [
+        "underground",
+        "local",
+        "MCR",
+        "house",
+        "breaks",
+        "techno",
+        "booty-club"
+      ],
+      "contact": {
+        "address": "",
+        "website": "https://www.instagram.com/horse__boyy/",
+        "phone": "",
+        "email": "info.horseboyy@gmail.com",
+        "hours": ""
+      },
+      "address": "",
+      "hours": "",
+      "phone": "",
+      "email": "info.horseboyy@gmail.com",
+      "website": "https://www.instagram.com/horse__boyy/",
+      "thumbnail_src": "",
+      "thumbnail_alt": "",
+      "public_data": [
+        "Email: info.horseboyy@gmail.com",
+        "Website: https://www.instagram.com/horse__boyy/",
+        "Instagram: https://www.instagram.com/horse__boyy/"
+      ],
+      "related_places": [
+        "kinki",
+        "apotheka"
+      ],
+      "sources": [
+        "Manila Community Radio",
+        "Direct steward submission via JoshShoot.sol"
+      ],
+      "source_type": "public-source",
+      "path": "entries/horseboyy/entry.md",
+      "source_modified_at": "2026-07-31T21:49:20.695576Z",
+      "source_modified_ts": 1785534560
+    },
+    {
+      "title": "Jesse G",
+      "title_localized": {
+        "en": "Jesse G"
+      },
+      "name": "Jesse G",
+      "sort_name": "Jesse G",
+      "brand_name": "",
+      "branch_name": "",
+      "aliases": [],
+      "slug": "jesse-g",
+      "location_id": "",
+      "region_id": "metro-manila",
+      "street_id": "",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "artist",
+      "area": "Germany / Manila",
+      "public_area": "Germany / Manila",
+      "description": "European-based techno selector with Manila roots, known for hypnotic, groovy, vinyl-conscious sets.",
+      "description_localized": {
+        "en": "European-based techno selector with Manila roots, known for hypnotic, groovy, vinyl-conscious sets."
+      },
+      "notes": "Jesse G is a European-based techno selector with deep roots in Manila’s scene. Her touring practice reaches Berlin institutions including Berghain, Panorama Bar, and RSO, alongside Nous’Klaer Festival Rotterdam, while her sound remains hypnotic, groovy, and vinyl-conscious.",
+      "note_points": [],
+      "summary": "European-based techno selector with Manila roots, known for hypnotic, groovy, vinyl-conscious sets. Jesse G is a European-based techno selector with deep roots in Manila’s scene. Her touring practice reaches Berlin insti",
+      "tags": [
+        "underground",
+        "EuropeanTechno",
+        "Berghain",
+        "groovy",
+        "techno",
+        "vinyl",
+        "hypnotic"
+      ],
+      "contact": {
+        "address": "",
+        "website": "https://soundcloud.com/jessegofficial",
+        "phone": "",
+        "email": "jamila@minor-am.com",
+        "hours": ""
+      },
+      "address": "",
+      "hours": "",
+      "phone": "",
+      "email": "jamila@minor-am.com",
+      "website": "https://soundcloud.com/jessegofficial",
+      "thumbnail_src": "",
+      "thumbnail_alt": "",
+      "public_data": [
+        "Email: jamila@minor-am.com",
+        "Email: thisisjesseg@gmail.com",
+        "Website: https://soundcloud.com/jessegofficial",
+        "SoundCloud: https://soundcloud.com/jessegofficial",
+        "Instagram: https://www.instagram.com/jesse_g/"
+      ],
+      "related_places": [],
+      "sources": [
+        "https://soundcloud.com/jessegofficial",
+        "Direct steward submission via JoshShoot.sol"
+      ],
+      "source_type": "public-source",
+      "path": "entries/jesse-g/entry.md",
+      "source_modified_at": "2026-07-31T21:49:20.840577Z",
+      "source_modified_ts": 1785534560
     },
     {
       "title": "Joshua Den Ouden",
@@ -124,11 +396,11 @@
         "community-building"
       ],
       "contact": {
-        "email": "",
         "address": "",
+        "website": "https://linktr.ee/joshshoot.sol",
         "phone": "",
-        "hours": "",
-        "website": "https://linktr.ee/joshshoot.sol"
+        "email": "",
+        "hours": ""
       },
       "address": "",
       "hours": "",
@@ -195,17 +467,17 @@
         "queer"
       ],
       "contact": {
-        "email": "",
         "address": "Clustered around Poblacion / Makati",
+        "website": "https://linktr.ee/kinki.love__",
         "phone": "",
-        "hours": "Multiple nights weekly; Thursday – Saturday",
-        "website": "https://linktr.ee/kinki.love"
+        "email": "",
+        "hours": "Multiple nights weekly; Thursday – Saturday"
       },
       "address": "Clustered around Poblacion / Makati",
       "hours": "Multiple nights weekly; Thursday – Saturday",
       "phone": "",
       "email": "",
-      "website": "https://linktr.ee/kinki.love",
+      "website": "https://linktr.ee/kinki.love__",
       "thumbnail_src": "",
       "thumbnail_alt": "",
       "public_data": [
@@ -225,6 +497,74 @@
       "path": "entries/kinki/entry.md",
       "source_modified_at": "2026-07-21T13:19:43.985491Z",
       "source_modified_ts": 1784639983
+    },
+    {
+      "title": "Luna",
+      "title_localized": {
+        "en": "Luna"
+      },
+      "name": "Luna",
+      "sort_name": "Luna",
+      "brand_name": "",
+      "branch_name": "",
+      "aliases": [
+        "heyitslunastardust"
+      ],
+      "slug": "luna",
+      "location_id": "",
+      "region_id": "metro-manila",
+      "street_id": "",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "artist",
+      "area": "Metro Manila",
+      "public_area": "Metro Manila",
+      "description": "Manila selector exploring dreamy house, breaks, ambient, and club music through a femme-led local perspective.",
+      "description_localized": {
+        "en": "Manila selector exploring dreamy house, breaks, ambient, and club music through a femme-led local perspective."
+      },
+      "notes": "Luna, operating as heyitslunastardust, is a Manila selector exploring dreamy house, breaks, ambient, and club music. Her 2026 Manila Community Radio session marks a locally rooted, femme-led voice in the post-pandemic rebuilding of intimate community spaces beyond commercial EDM circuits.",
+      "note_points": [],
+      "summary": "Manila selector exploring dreamy house, breaks, ambient, and club music through a femme-led local perspective. Luna, operating as heyitslunastardust, is a Manila selector exploring dreamy house, breaks, ambient, and club",
+      "tags": [
+        "underground",
+        "local",
+        "MCR",
+        "house",
+        "breaks",
+        "ambient",
+        "club",
+        "femme"
+      ],
+      "contact": {
+        "address": "",
+        "website": "https://soundcloud.com/heyitslunastardust",
+        "phone": "",
+        "email": "",
+        "hours": ""
+      },
+      "address": "",
+      "hours": "",
+      "phone": "",
+      "email": "",
+      "website": "https://soundcloud.com/heyitslunastardust",
+      "thumbnail_src": "",
+      "thumbnail_alt": "",
+      "public_data": [
+        "Website: https://soundcloud.com/heyitslunastardust",
+        "SoundCloud: https://soundcloud.com/heyitslunastardust",
+        "Instagram: https://www.instagram.com/lunastardust__/"
+      ],
+      "related_places": [],
+      "sources": [
+        "Manila Community Radio",
+        "Direct steward submission via JoshShoot.sol"
+      ],
+      "source_type": "public-source",
+      "path": "entries/luna/entry.md",
+      "source_modified_at": "2026-07-31T21:49:20.709767Z",
+      "source_modified_ts": 1785534560
     },
     {
       "title": "MidnightRider.sol",
@@ -264,11 +604,11 @@
         "canada"
       ],
       "contact": {
-        "email": "",
         "address": "",
+        "website": "",
         "phone": "",
-        "hours": "",
-        "website": ""
+        "email": "",
+        "hours": ""
       },
       "address": "",
       "hours": "",
@@ -289,6 +629,74 @@
       "path": "entries/midnightrider-sol/entry.md",
       "source_modified_at": "2026-07-20T15:51:04.270178Z",
       "source_modified_ts": 1784562664
+    },
+    {
+      "title": "Sonchauni",
+      "title_localized": {
+        "en": "Sonchauni"
+      },
+      "name": "Sonchauni",
+      "sort_name": "Sonchauni",
+      "brand_name": "",
+      "branch_name": "",
+      "aliases": [],
+      "slug": "sonchauni",
+      "location_id": "",
+      "region_id": "metro-manila",
+      "street_id": "",
+      "status": "published",
+      "draft": false,
+      "badge": "",
+      "category": "artist",
+      "area": "Dubai / Manila",
+      "public_area": "Dubai / Manila",
+      "description": "Dubai- and Manila-connected selector balancing ambient euphoria and percussive tension through a diasporic practice.",
+      "description_localized": {
+        "en": "Dubai- and Manila-connected selector balancing ambient euphoria and percussive tension through a diasporic practice."
+      },
+      "notes": "Sonchauni works between Dubai and Manila, balancing ambient euphoria with percussive tension. Using Dubai as a base and Manila as home, her transit-shaped practice reflects a diasporic artist workflow sustaining the city’s wider underground network.",
+      "note_points": [],
+      "summary": "Dubai- and Manila-connected selector balancing ambient euphoria and percussive tension through a diasporic practice. Sonchauni works between Dubai and Manila, balancing ambient euphoria with percussive tension. Using Dub",
+      "tags": [
+        "underground",
+        "MENA",
+        "Dubai",
+        "Manila",
+        "ambient",
+        "percussive",
+        "experimental",
+        "diasporic"
+      ],
+      "contact": {
+        "address": "",
+        "website": "https://soundcloud.com/sonchauni",
+        "phone": "",
+        "email": "sonchauni@gmail.com",
+        "hours": ""
+      },
+      "address": "",
+      "hours": "",
+      "phone": "",
+      "email": "sonchauni@gmail.com",
+      "website": "https://soundcloud.com/sonchauni",
+      "thumbnail_src": "",
+      "thumbnail_alt": "",
+      "public_data": [
+        "Email: sonchauni@gmail.com",
+        "Website: https://soundcloud.com/sonchauni",
+        "SoundCloud: https://soundcloud.com/sonchauni",
+        "Instagram: https://www.instagram.com/sonchauni/",
+        "Linktree: https://linktr.ee/sonchauni"
+      ],
+      "related_places": [],
+      "sources": [
+        "Manila Community Radio",
+        "Direct steward submission via JoshShoot.sol"
+      ],
+      "source_type": "public-source",
+      "path": "entries/sonchauni/entry.md",
+      "source_modified_at": "2026-07-31T21:49:20.712576Z",
+      "source_modified_ts": 1785534560
     },
     {
       "title": "UNKNWN",
@@ -332,17 +740,17 @@
         "budots-adjacent"
       ],
       "contact": {
-        "email": "info@unknwn.asia",
         "address": "2288 Don Chino Roces Avenue Extension, Makati 1231",
+        "website": "https://www.instagram.com/unknwn.mnl/?hl=en",
         "phone": "",
-        "hours": "Site-specific (Outdoor / Festival / One-Off)",
-        "website": "https://unknwn.asia/"
+        "email": "info@unknwn.asia",
+        "hours": "Site-specific (Outdoor / Festival / One-Off)"
       },
       "address": "2288 Don Chino Roces Avenue Extension, Makati 1231",
       "hours": "Site-specific (Outdoor / Festival / One-Off)",
       "phone": "",
       "email": "info@unknwn.asia",
-      "website": "https://unknwn.asia/",
+      "website": "https://www.instagram.com/unknwn.mnl/?hl=en",
       "thumbnail_src": "",
       "thumbnail_alt": "",
       "public_data": [
