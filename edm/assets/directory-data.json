@@ -25,13 +25,13 @@
       "category": "venue",
       "area": "Poblacion / Makati, Manila",
       "public_area": "Poblacion / Makati, Manila",
-      "description": "A Poblacion underground institution with baile-funk, global club, house, Detroit techno, jungle, and '90s electro across two floors.",
+      "description": "Multi-room Poblacion club with global club, baile funk, and house upstairs; techno, jungle, and electro downstairs.",
       "description_localized": {
-        "en": "A Poblacion underground institution with baile-funk, global club, house, Detroit techno, jungle, and '90s electro across two floors."
+        "en": "Multi-room Poblacion club with global club, baile funk, and house upstairs; techno, jungle, and electro downstairs."
       },
-      "notes": "Tucked behind its iconic red door in the heart of Poblacion, Apotheka remains one of Manila's consistent underground institutions. The main floor leans into baile-funk, global club, and house; the mezzanine delivers sharper Detroit techno, jungle, and '90s electro.",
+      "notes": "Apotheka is a multi-room club in Poblacion, Makati known for consistent music programming across separate floors. The main room centers on global club, baile funk, and house, while the lower level focuses on techno, jungle, and electro.",
       "note_points": [],
-      "summary": "A Poblacion underground institution with baile-funk, global club, house, Detroit techno, jungle, and '90s electro across two floors. Tucked behind its iconic red door in the heart of Poblacion, Apotheka remains one of Ma",
+      "summary": "Multi-room Poblacion club with global club, baile funk, and house upstairs; techno, jungle, and electro downstairs. Apotheka is a multi-room club in Poblacion, Makati known for consistent music programming across separat",
       "tags": [
         "underground",
         "indoor",
@@ -47,11 +47,11 @@
         "afro-house"
       ],
       "contact": {
-        "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
+        "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM",
         "website": "https://apothekamanila.com/",
-        "phone": "+63 936 981 5462",
+        "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
         "email": "marco@quayconcepts.ph",
-        "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM"
+        "phone": "+63 936 981 5462"
       },
       "address": "G/F White Rabbit Bldg, 5672 Dona Carmen St cor. General Luna, Makati 1210",
       "hours": "Wednesday – Saturday 9:00 PM – 4:00 AM",
@@ -65,22 +65,19 @@
         "Hours: Wednesday – Saturday 9:00 PM – 4:00 AM",
         "Phone: +63 936 981 5462",
         "Email: marco@quayconcepts.ph",
-        "Website: https://apothekamanila.com/",
-        "Instagram: @apothekamanila",
-        "Resident Advisor",
-        "Facebook"
+        "Website: https://apothekamanila.com/"
       ],
       "related_places": [
         "kinki",
         "unknwn"
       ],
       "sources": [
-        "https://apothekamanila.com/"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/apotheka/entry.md",
-      "source_modified_at": "2026-07-21T13:19:43.848491Z",
-      "source_modified_ts": 1784639983
+      "source_modified_at": "2026-08-08T00:18:13.029993Z",
+      "source_modified_ts": 1786148293
     },
     {
       "title": "Duality",
@@ -104,13 +101,13 @@
       "category": "artist",
       "area": "Metro Manila",
       "public_area": "Metro Manila",
-      "description": "Manila selector bringing deep techno, percussion, bass, ambient, and analogue texture into refined, complex sets.",
+      "description": "Sean Bautista’s Manila DJ project, moving between club music, design, community platforms, analogue influence, and digital club form.",
       "description_localized": {
-        "en": "Manila selector bringing deep techno, percussion, bass, ambient, and analogue texture into refined, complex sets."
+        "en": "Sean Bautista’s Manila DJ project, moving between club music, design, community platforms, analogue influence, and digital club form."
       },
-      "notes": "Duality, aka Sean Bautista, moves through deep techno, percussion, bass, ambient, and analogue texture. His sets hold old against new and analogue against digital, producing a refined but complex sound with bass-forward force.",
+      "notes": "Duality is the DJ project of Sean Bautista, a Manila-based artist working across club music, design, and community platforms. He is closely linked to Manila Community Radio and Transit Records, and is best known for deep, percussive sets that sit between analogue influence and digital club form.",
       "note_points": [],
-      "summary": "Manila selector bringing deep techno, percussion, bass, ambient, and analogue texture into refined, complex sets. Duality, aka Sean Bautista, moves through deep techno, percussion, bass, ambient, and analogue texture. Hi",
+      "summary": "Sean Bautista’s Manila DJ project, moving between club music, design, community platforms, analogue influence, and digital club form. Duality is the DJ project of Sean Bautista, a Manila-based artist working across club ",
       "tags": [
         "underground",
         "deep-techno",
@@ -121,11 +118,11 @@
         "analog"
       ],
       "contact": {
-        "address": "",
+        "hours": "",
         "website": "https://soundcloud.com/duality_dj",
-        "phone": "",
+        "address": "",
         "email": "",
-        "hours": ""
+        "phone": ""
       },
       "address": "",
       "hours": "",
@@ -136,18 +133,16 @@
       "thumbnail_alt": "",
       "public_data": [
         "Website: https://soundcloud.com/duality_dj",
-        "SoundCloud: https://soundcloud.com/duality_dj",
         "Instagram: https://www.instagram.com/duality__dj/"
       ],
       "related_places": [],
       "sources": [
-        "https://soundcloud.com/duality_dj",
-        "Direct steward submission via JoshShoot.sol"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/duality/entry.md",
-      "source_modified_at": "2026-07-31T21:49:20.708856Z",
-      "source_modified_ts": 1785534560
+      "source_modified_at": "2026-08-08T00:18:13.030283Z",
+      "source_modified_ts": 1786148293
     },
     {
       "title": "Fetlavr",
@@ -169,13 +164,13 @@
       "category": "artist",
       "area": "Poblacion / Manila",
       "public_area": "Poblacion / Manila",
-      "description": "Locally rooted Manila selector working across techno, house, and experimental music.",
+      "description": "Manila producer and DJ active in queer underground nightlife, across techno, house, and experimental club music.",
       "description_localized": {
-        "en": "Locally rooted Manila selector working across techno, house, and experimental music."
+        "en": "Manila producer and DJ active in queer underground nightlife, across techno, house, and experimental club music."
       },
-      "notes": "Fetlavr is a locally rooted Manila selector moving through techno, house, and experimental music. Documented in the Manila Community Radio archive, the project signals a steady, community-led presence in the city’s underground.",
+      "notes": "Fetlavr is a Manila-based producer and DJ active in the city’s queer and underground nightlife circuit. His sets move through techno, house, and experimental club music, with regular appearances at venues such as Apotheka, KINKI, and Elephant.",
       "note_points": [],
-      "summary": "Locally rooted Manila selector working across techno, house, and experimental music. Fetlavr is a locally rooted Manila selector moving through techno, house, and experimental music. Documented in the Manila Community Ra",
+      "summary": "Manila producer and DJ active in queer underground nightlife, across techno, house, and experimental club music. Fetlavr is a Manila-based producer and DJ active in the city’s queer and underground nightlife circuit. His",
       "tags": [
         "underground",
         "local",
@@ -186,11 +181,11 @@
         "experimental"
       ],
       "contact": {
-        "address": "",
+        "hours": "",
         "website": "https://soundcloud.com/fetlavr",
-        "phone": "",
+        "address": "",
         "email": "",
-        "hours": ""
+        "phone": ""
       },
       "address": "",
       "hours": "",
@@ -201,7 +196,6 @@
       "thumbnail_alt": "",
       "public_data": [
         "Website: https://soundcloud.com/fetlavr",
-        "SoundCloud: https://soundcloud.com/fetlavr",
         "Instagram: https://www.instagram.com/fetlavr/"
       ],
       "related_places": [
@@ -209,13 +203,12 @@
         "apotheka"
       ],
       "sources": [
-        "Manila Community Radio",
-        "Direct steward submission via JoshShoot.sol"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/fetlavr/entry.md",
-      "source_modified_at": "2026-07-31T21:49:20.923130Z",
-      "source_modified_ts": 1785534560
+      "source_modified_at": "2026-08-08T00:18:13.030578Z",
+      "source_modified_ts": 1786148293
     },
     {
       "title": "Horseboyy",
@@ -239,13 +232,13 @@
       "category": "artist",
       "area": "Metro Manila",
       "public_area": "Metro Manila",
-      "description": "Manila selector blending house, breaks, techno, and booty / club within the city’s post-pandemic underground wave.",
+      "description": "Manila DJ and producer moving from happy hardcore through house, techno, and post-trance in the local underground.",
       "description_localized": {
-        "en": "Manila selector blending house, breaks, techno, and booty / club within the city’s post-pandemic underground wave."
+        "en": "Manila DJ and producer moving from happy hardcore through house, techno, and post-trance in the local underground."
       },
-      "notes": "Horseboyy, also operating as HORSIN AROUND, is a Manila-based selector working across house, breaks, techno, and booty / club. Documented through Manila Community Radio, he belongs to the post-pandemic wave of local DJs rebuilding the city’s intimate underground circuit.",
+      "notes": "Horseboyy is a Manila-based DJ and producer whose sound developed from happy hardcore into house, techno, and post-trance. He is part of the local underground network through club bookings, compilations, and online releases.",
       "note_points": [],
-      "summary": "Manila selector blending house, breaks, techno, and booty / club within the city’s post-pandemic underground wave. Horseboyy, also operating as HORSIN AROUND, is a Manila-based selector working across house, breaks, tech",
+      "summary": "Manila DJ and producer moving from happy hardcore through house, techno, and post-trance in the local underground. Horseboyy is a Manila-based DJ and producer whose sound developed from happy hardcore into house, techno,",
       "tags": [
         "underground",
         "local",
@@ -256,11 +249,11 @@
         "booty-club"
       ],
       "contact": {
-        "address": "",
+        "hours": "",
         "website": "https://www.instagram.com/horse__boyy/",
-        "phone": "",
+        "address": "",
         "email": "info.horseboyy@gmail.com",
-        "hours": ""
+        "phone": ""
       },
       "address": "",
       "hours": "",
@@ -271,21 +264,19 @@
       "thumbnail_alt": "",
       "public_data": [
         "Email: info.horseboyy@gmail.com",
-        "Website: https://www.instagram.com/horse__boyy/",
-        "Instagram: https://www.instagram.com/horse__boyy/"
+        "Website: https://www.instagram.com/horse__boyy/"
       ],
       "related_places": [
         "kinki",
         "apotheka"
       ],
       "sources": [
-        "Manila Community Radio",
-        "Direct steward submission via JoshShoot.sol"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/horseboyy/entry.md",
-      "source_modified_at": "2026-07-31T21:49:20.695576Z",
-      "source_modified_ts": 1785534560
+      "source_modified_at": "2026-08-08T00:18:13.030934Z",
+      "source_modified_ts": 1786148293
     },
     {
       "title": "Jesse G",
@@ -307,13 +298,13 @@
       "category": "artist",
       "area": "Germany / Manila",
       "public_area": "Germany / Manila",
-      "description": "European-based techno selector with Manila roots, known for hypnotic, groovy, vinyl-conscious sets.",
+      "description": "Berlin-based techno DJ of German Filipina and Sicilian descent, known for precise vinyl-led techno, bass, breakbeat, and house sets.",
       "description_localized": {
-        "en": "European-based techno selector with Manila roots, known for hypnotic, groovy, vinyl-conscious sets."
+        "en": "Berlin-based techno DJ of German Filipina and Sicilian descent, known for precise vinyl-led techno, bass, breakbeat, and house sets."
       },
-      "notes": "Jesse G is a European-based techno selector with deep roots in Manila’s scene. Her touring practice reaches Berlin institutions including Berghain, Panorama Bar, and RSO, alongside Nous’Klaer Festival Rotterdam, while her sound remains hypnotic, groovy, and vinyl-conscious.",
+      "notes": "Jesse G is a Berlin-based techno DJ of German Filipina and Sicilian descent with a strong profile in European underground club culture. She is associated with Hard Wax, Tresor, and RSO, and is known for precise, vinyl-led sets built from techno, bass, breakbeat, and house.",
       "note_points": [],
-      "summary": "European-based techno selector with Manila roots, known for hypnotic, groovy, vinyl-conscious sets. Jesse G is a European-based techno selector with deep roots in Manila’s scene. Her touring practice reaches Berlin insti",
+      "summary": "Berlin-based techno DJ of German Filipina and Sicilian descent, known for precise vinyl-led techno, bass, breakbeat, and house sets. Jesse G is a Berlin-based techno DJ of German Filipina and Sicilian descent with a stro",
       "tags": [
         "underground",
         "EuropeanTechno",
@@ -324,11 +315,11 @@
         "hypnotic"
       ],
       "contact": {
-        "address": "",
+        "hours": "",
         "website": "https://soundcloud.com/jessegofficial",
-        "phone": "",
+        "address": "",
         "email": "jamila@minor-am.com",
-        "hours": ""
+        "phone": ""
       },
       "address": "",
       "hours": "",
@@ -339,20 +330,17 @@
       "thumbnail_alt": "",
       "public_data": [
         "Email: jamila@minor-am.com",
-        "Email: thisisjesseg@gmail.com",
         "Website: https://soundcloud.com/jessegofficial",
-        "SoundCloud: https://soundcloud.com/jessegofficial",
         "Instagram: https://www.instagram.com/jesse_g/"
       ],
       "related_places": [],
       "sources": [
-        "https://soundcloud.com/jessegofficial",
-        "Direct steward submission via JoshShoot.sol"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/jesse-g/entry.md",
-      "source_modified_at": "2026-07-31T21:49:20.840577Z",
-      "source_modified_ts": 1785534560
+      "source_modified_at": "2026-08-08T00:18:13.031250Z",
+      "source_modified_ts": 1786148293
     },
     {
       "title": "Joshua Den Ouden",
@@ -377,13 +365,13 @@
       "category": "project",
       "area": "The Philippines / Southeast Asia",
       "public_area": "The Philippines / Southeast Asia",
-      "description": "JoshShoot.sol helps build Southeast Asia's creative culture through film, photography, web3, events, and live experiences.",
+      "description": "Manila DJ and creative practitioner working across club culture, media, and digital systems through a research-driven local lens.",
       "description_localized": {
-        "en": "JoshShoot.sol helps build Southeast Asia's creative culture through film, photography, web3, events, and live experiences."
+        "en": "Manila DJ and creative practitioner working across club culture, media, and digital systems through a research-driven local lens."
       },
-      "notes": "Joshua Den Ouden, publicly known as JoshShoot.sol, helps build Southeast Asia's creative culture at the intersection of lens-based media, blockchain culture, and live experiences. His work spans film, photography, web3, events, and creative community-building.",
+      "notes": "Joshua Den Ouden is a Manila-based DJ and creative practitioner working between club culture, media, and digital systems. His work draws from Rotterdam, African rhythmic structures, and Southeast Asian context, placing him within the more research-driven side of the local scene.",
       "note_points": [],
-      "summary": "JoshShoot.sol helps build Southeast Asia's creative culture through film, photography, web3, events, and live experiences. Joshua Den Ouden, publicly known as JoshShoot.sol, helps build Southeast Asia's creative culture ",
+      "summary": "Manila DJ and creative practitioner working across club culture, media, and digital systems through a research-driven local lens. Joshua Den Ouden is a Manila-based DJ and creative practitioner working between club cultu",
       "tags": [
         "creator",
         "cultural-infrastructure",
@@ -396,11 +384,11 @@
         "community-building"
       ],
       "contact": {
-        "address": "",
+        "hours": "",
         "website": "https://linktr.ee/joshshoot.sol",
-        "phone": "",
+        "address": "",
         "email": "",
-        "hours": ""
+        "phone": ""
       },
       "address": "",
       "hours": "",
@@ -410,10 +398,9 @@
       "thumbnail_src": "",
       "thumbnail_alt": "",
       "public_data": [
-        "Instagram: @joshuadenouden",
-        "SoundCloud: https://soundcloud.com/joshua-den-ouden",
-        "Linktree: https://linktr.ee/joshshoot.sol",
-        "Project identity: JoshShoot.sol"
+        "Website: https://linktr.ee/joshshoot.sol",
+        "Instagram: https://www.instagram.com/joshuadenouden",
+        "Soundcloud: https://soundcloud.com/joshua-den-ouden"
       ],
       "related_places": [
         "apotheka",
@@ -421,12 +408,12 @@
         "kinki"
       ],
       "sources": [
-        "Self-submitted by Joshua Den Ouden"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/joshua-den-ouden/entry.md",
-      "source_modified_at": "2026-07-22T13:36:17.070370Z",
-      "source_modified_ts": 1784727377
+      "source_modified_at": "2026-08-08T00:18:13.031545Z",
+      "source_modified_ts": 1786148293
     },
     {
       "title": "KINKI",
@@ -448,13 +435,13 @@
       "category": "venue",
       "area": "Poblacion / Makati, Manila",
       "public_area": "Poblacion / Makati, Manila",
-      "description": "A Poblacion-Makati venue and event series delivering raw, community-led programming across house, techno, breaks, and experimental nights.",
+      "description": "Manila party space and collective programming alternative electronic nights, scene-led bookings, and accessible underground entry points.",
       "description_localized": {
-        "en": "A Poblacion-Makati venue and event series delivering raw, community-led programming across house, techno, breaks, and experimental nights."
+        "en": "Manila party space and collective programming alternative electronic nights, scene-led bookings, and accessible underground entry points."
       },
-      "notes": "KINKI operates as both a venue and an event series (kinki.love), delivering raw, community-led programming across multiple nights. Signature series include ELEPHANT THURSDAYS, KINKI LOVE, and PROVIDER. The space favors risk-taking and unpolished underground energy over commercial polish.",
+      "notes": "KINKI is a Manila party space and collective that programs alternative electronic nights for a local weekend crowd. It is commonly associated with scene-led bookings, crossover audiences, and an accessible entry point into the city’s underground circuit.",
       "note_points": [],
-      "summary": "A Poblacion-Makati venue and event series delivering raw, community-led programming across house, techno, breaks, and experimental nights. KINKI operates as both a venue and an event series (kinki.love), delivering raw, ",
+      "summary": "Manila party space and collective programming alternative electronic nights, scene-led bookings, and accessible underground entry points. KINKI is a Manila party space and collective that programs alternative electronic ",
       "tags": [
         "underground",
         "indoor",
@@ -467,11 +454,11 @@
         "queer"
       ],
       "contact": {
-        "address": "Clustered around Poblacion / Makati",
+        "hours": "Multiple nights weekly; Thursday – Saturday",
         "website": "https://linktr.ee/kinki.love__",
-        "phone": "",
+        "address": "Clustered around Poblacion / Makati",
         "email": "",
-        "hours": "Multiple nights weekly; Thursday – Saturday"
+        "phone": ""
       },
       "address": "Clustered around Poblacion / Makati",
       "hours": "Multiple nights weekly; Thursday – Saturday",
@@ -483,20 +470,19 @@
       "public_data": [
         "Address: Clustered around Poblacion / Makati",
         "Hours: Multiple nights weekly; Thursday – Saturday",
-        "Website: https://linktr.ee/kinki.love",
-        "Instagram: @kinki.love__"
+        "Website: https://linktr.ee/kinki.love__"
       ],
       "related_places": [
         "apotheka",
         "unknwn"
       ],
       "sources": [
-        "https://linktr.ee/kinki.love"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/kinki/entry.md",
-      "source_modified_at": "2026-07-21T13:19:43.985491Z",
-      "source_modified_ts": 1784639983
+      "source_modified_at": "2026-08-08T00:18:13.032036Z",
+      "source_modified_ts": 1786148293
     },
     {
       "title": "Luna",
@@ -520,13 +506,13 @@
       "category": "artist",
       "area": "Metro Manila",
       "public_area": "Metro Manila",
-      "description": "Manila selector exploring dreamy house, breaks, ambient, and club music through a femme-led local perspective.",
+      "description": "Manila DJ bridging lounge, open-format, and electronic spaces through ambient texture, house structure, and soft club pacing.",
       "description_localized": {
-        "en": "Manila selector exploring dreamy house, breaks, ambient, and club music through a femme-led local perspective."
+        "en": "Manila DJ bridging lounge, open-format, and electronic spaces through ambient texture, house structure, and soft club pacing."
       },
-      "notes": "Luna, operating as heyitslunastardust, is a Manila selector exploring dreamy house, breaks, ambient, and club music. Her 2026 Manila Community Radio session marks a locally rooted, femme-led voice in the post-pandemic rebuilding of intimate community spaces beyond commercial EDM circuits.",
+      "notes": "Luna is a Manila-based DJ working across lounge settings, open format events, and electronic music spaces. Her sound combines ambient texture, house structure, and soft club pacing, making her a consistent bridge between mainstream and scene-adjacent audiences.",
       "note_points": [],
-      "summary": "Manila selector exploring dreamy house, breaks, ambient, and club music through a femme-led local perspective. Luna, operating as heyitslunastardust, is a Manila selector exploring dreamy house, breaks, ambient, and club",
+      "summary": "Manila DJ bridging lounge, open-format, and electronic spaces through ambient texture, house structure, and soft club pacing. Luna is a Manila-based DJ working across lounge settings, open format events, and electronic m",
       "tags": [
         "underground",
         "local",
@@ -538,11 +524,11 @@
         "femme"
       ],
       "contact": {
-        "address": "",
+        "hours": "",
         "website": "https://soundcloud.com/heyitslunastardust",
-        "phone": "",
+        "address": "",
         "email": "",
-        "hours": ""
+        "phone": ""
       },
       "address": "",
       "hours": "",
@@ -553,18 +539,16 @@
       "thumbnail_alt": "",
       "public_data": [
         "Website: https://soundcloud.com/heyitslunastardust",
-        "SoundCloud: https://soundcloud.com/heyitslunastardust",
         "Instagram: https://www.instagram.com/lunastardust__/"
       ],
       "related_places": [],
       "sources": [
-        "Manila Community Radio",
-        "Direct steward submission via JoshShoot.sol"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/luna/entry.md",
-      "source_modified_at": "2026-07-31T21:49:20.709767Z",
-      "source_modified_ts": 1785534560
+      "source_modified_at": "2026-08-08T00:18:13.032376Z",
+      "source_modified_ts": 1786148293
     },
     {
       "title": "MidnightRider.sol",
@@ -604,11 +588,11 @@
         "canada"
       ],
       "contact": {
-        "address": "",
+        "hours": "",
         "website": "",
-        "phone": "",
+        "address": "",
         "email": "",
-        "hours": ""
+        "phone": ""
       },
       "address": "",
       "hours": "",
@@ -650,13 +634,13 @@
       "category": "artist",
       "area": "Dubai / Manila",
       "public_area": "Dubai / Manila",
-      "description": "Dubai- and Manila-connected selector balancing ambient euphoria and percussive tension through a diasporic practice.",
+      "description": "Dubai- and Manila-based Filipino artist connecting DJing, visual direction, collective building, and queer club culture.",
       "description_localized": {
-        "en": "Dubai- and Manila-connected selector balancing ambient euphoria and percussive tension through a diasporic practice."
+        "en": "Dubai- and Manila-based Filipino artist connecting DJing, visual direction, collective building, and queer club culture."
       },
-      "notes": "Sonchauni works between Dubai and Manila, balancing ambient euphoria with percussive tension. Using Dubai as a base and Manila as home, her transit-shaped practice reflects a diasporic artist workflow sustaining the city’s wider underground network.",
+      "notes": "Sonchauni is the project of Assi Abogado, a Filipino-born artist based in Dubai and active across both the UAE and Manila underground. Their work connects DJing, visual direction, and collective building, with a focus on textured, high-intensity sets rooted in queer club culture.",
       "note_points": [],
-      "summary": "Dubai- and Manila-connected selector balancing ambient euphoria and percussive tension through a diasporic practice. Sonchauni works between Dubai and Manila, balancing ambient euphoria with percussive tension. Using Dub",
+      "summary": "Dubai- and Manila-based Filipino artist connecting DJing, visual direction, collective building, and queer club culture. Sonchauni is the project of Assi Abogado, a Filipino-born artist based in Dubai and active across b",
       "tags": [
         "underground",
         "MENA",
@@ -668,11 +652,11 @@
         "diasporic"
       ],
       "contact": {
-        "address": "",
+        "hours": "",
         "website": "https://soundcloud.com/sonchauni",
-        "phone": "",
+        "address": "",
         "email": "sonchauni@gmail.com",
-        "hours": ""
+        "phone": ""
       },
       "address": "",
       "hours": "",
@@ -684,19 +668,17 @@
       "public_data": [
         "Email: sonchauni@gmail.com",
         "Website: https://soundcloud.com/sonchauni",
-        "SoundCloud: https://soundcloud.com/sonchauni",
         "Instagram: https://www.instagram.com/sonchauni/",
         "Linktree: https://linktr.ee/sonchauni"
       ],
       "related_places": [],
       "sources": [
-        "Manila Community Radio",
-        "Direct steward submission via JoshShoot.sol"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/sonchauni/entry.md",
-      "source_modified_at": "2026-07-31T21:49:20.712576Z",
-      "source_modified_ts": 1785534560
+      "source_modified_at": "2026-08-08T00:18:13.032677Z",
+      "source_modified_ts": 1786148293
     },
     {
       "title": "UNKNWN",
@@ -718,13 +700,13 @@
       "category": "organization",
       "area": "Roving / Multi-Neighborhood, Manila",
       "public_area": "Roving / Multi-Neighborhood, Manila",
-      "description": "A Manila collective that relocates underground parties into organic markets, warehouses, unfinished buildings, and heritage sites.",
+      "description": "Manila collective staging events in warehouses, heritage sites, and repurposed spaces through local, regional, and long-term cultural programming.",
       "description_localized": {
-        "en": "A Manila collective that relocates underground parties into organic markets, warehouses, unfinished buildings, and heritage sites."
+        "en": "Manila collective staging events in warehouses, heritage sites, and repurposed spaces through local, regional, and long-term cultural programming."
       },
-      "notes": "UNKNWN transforms Manila's buttoned-up nightlife by relocating parties into unlikely spaces: organic markets, unfinished buildings, warehouses, and heritage sites. The collective prioritizes curated lineups that blend local talent with regional voices, featuring residents Emel Rowe, Samantha Nicole, JAV, Tomas, and Randy Salvador.",
+      "notes": "UNKNWN is a Manila-based collective that stages events in warehouses, heritage sites, and other repurposed spaces. Its contribution to the scene lies in combining location strategy, local and regional lineups, and long-term cultural positioning rather than standard venue-based programming.",
       "note_points": [],
-      "summary": "A Manila collective that relocates underground parties into organic markets, warehouses, unfinished buildings, and heritage sites. UNKNWN transforms Manila's buttoned-up nightlife by relocating parties into unlikely spac",
+      "summary": "Manila collective staging events in warehouses, heritage sites, and repurposed spaces through local, regional, and long-term cultural programming. UNKNWN is a Manila-based collective that stages events in warehouses, her",
       "tags": [
         "underground",
         "one-off",
@@ -740,38 +722,36 @@
         "budots-adjacent"
       ],
       "contact": {
+        "hours": "Site-specific (Outdoor / Festival / One-Off)",
+        "website": "https://www.instagram.com/unknwn.mnl/",
         "address": "2288 Don Chino Roces Avenue Extension, Makati 1231",
-        "website": "https://www.instagram.com/unknwn.mnl/?hl=en",
-        "phone": "",
         "email": "info@unknwn.asia",
-        "hours": "Site-specific (Outdoor / Festival / One-Off)"
+        "phone": ""
       },
       "address": "2288 Don Chino Roces Avenue Extension, Makati 1231",
       "hours": "Site-specific (Outdoor / Festival / One-Off)",
       "phone": "",
       "email": "info@unknwn.asia",
-      "website": "https://www.instagram.com/unknwn.mnl/?hl=en",
+      "website": "https://www.instagram.com/unknwn.mnl/",
       "thumbnail_src": "",
       "thumbnail_alt": "",
       "public_data": [
         "Address: 2288 Don Chino Roces Avenue Extension, Makati 1231",
         "Hours: Site-specific (Outdoor / Festival / One-Off)",
         "Email: info@unknwn.asia",
-        "Website: https://unknwn.asia/",
-        "Instagram",
-        "Facebook"
+        "Website: https://www.instagram.com/unknwn.mnl/"
       ],
       "related_places": [
         "apotheka",
         "kinki"
       ],
       "sources": [
-        "https://unknwn.asia/"
+        "Updated steward submission via JoshShoot.sol"
       ],
       "source_type": "public-source",
       "path": "entries/unknwn/entry.md",
-      "source_modified_at": "2026-07-21T13:19:21.909464Z",
-      "source_modified_ts": 1784639961
+      "source_modified_at": "2026-08-08T00:18:13.033044Z",
+      "source_modified_ts": 1786148293
     }
   ]
 }
